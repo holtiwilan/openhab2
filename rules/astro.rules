@@ -1,0 +1,25 @@
+rule "OpenHAB system started - astro"
+when
+    System started
+then
+    createTimer(now.plusSeconds(180)) [ |
+        if (now.isAfter((SunsetTime.state as DateTimeType).calendar.timeInMillis) ||
+            now.isBefore((SunriseTime.state as DateTimeType).calendar.timeInMillis)
+        ) {
+            postUpdate(NightState, ON)
+        } else {
+            postUpdate(NightState, OFF)
+        }
+    ]
+end
+
+rule "Update NightState"
+when
+    Item SunElevation changed
+then
+    if(SunElevation.state < 3){
+        if(NightState.state != ON) postUpdate(NightState, ON)
+    } else {
+        if(NightState.state != OFF) postUpdate(NightState, OFF)
+    }
+end

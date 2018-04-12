@@ -1,0 +1,3 @@
+Group:Switch:OR(ON, OFF) gAnwesend		<presence>		(All)
+    Switch PresenceTim "Anwesenheit Tim@Home"           (gAnwesend)
+    Switch PresenceSandra "Anwesenheit Sandra@Home"	    (gAnwesend)

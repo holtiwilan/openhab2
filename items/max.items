@@ -1,0 +1,42 @@
+Group gMAXWohnzimmer					"Heizung Wohnzimmer"					<temperature>   (All, gEG, gEG_Wohnzimmer)
+	Switch		maxWZBattery    		"Batterie Thermostat leer"				<battery>		(gMAXWohnzimmer)								{channel="max:thermostat:JEQ0437404:JEQ0431743:battery_low"}
+	Switch		maxWZBatteryWall		"Batterie Wandthermostat leer"			<battery>		(gMAXWohnzimmer)								{channel="max:wallthermostat:JEQ0437404:JEQ0422804:battery_low"}
+	String		maxWZMode       		"Modus"									<settings>		(gMAXWohnzimmer)								{channel="max:wallthermostat:JEQ0437404:JEQ0422804:mode"}
+	Number		maxWZActual     		"Aktuelle Temperatur [%.1f °C]"			<temperature>	(gMAXWohnzimmer)								{channel="max:wallthermostat:JEQ0437404:JEQ0422804:actual_temp"}
+	Number		maxWZValve      		"Ventilstellung [%.1f%%]"				<heating>		(gMAXWohnzimmer)								{channel="max:thermostat:JEQ0437404:JEQ04317433:valve"}
+	Number		maxWZActual     		"Tempetarut Wohnzimmer"					<temperature>	(gMAXWohnzimmer)	[ "TargetTemperature" ]		{channel="max:wallthermostat:JEQ0437404:JEQ0422804:actual_temp"}
+
+Group gMAXKueche						"Heizung Küche"							<temperature>   (All, gEG, gEG_Kueche)
+	Switch		maxKuecheBattery		"Batterie Thermostat ist leer"			<battery>		(gMAXKueche)		{channel="max:thermostat:JEQ0437404:JEQ0618765:battery_low"}
+	String		maxKuecheMode			"Modus"									<settings>		(gMAXKueche)		{channel="max:thermostat:JEQ0437404:JEQ0618765:mode"}
+	Number		maxKuecheActual			"Aktuelle Temperatur [%.1f °C]"			<temperature>	(gMAXKueche)		{channel="max:thermostat:JEQ0437404:JEQ0618765:actual_temp"}
+	Number		maxKuecheSetTemp		"Solltemperatur [%.1f °C]"				<temperature>	(gMAXKueche)		{channel="max:thermostat:JEQ0437404:JEQ0618765:set_temp"}
+	Number		maxKuecheValve			"Ventilstellung [%.1f%%]"				<heating>		(gMAXKueche)		{channel="max:thermostat:JEQ0437404:JEQ0618765:valve"}
+
+Group gMAXFlur							"Heizung Flur"							<temperature>   (All, gEG, gEG_Flur)
+	Switch		maxFlurBattery			"Batterie Thermostat ist leer"			<battery>		(gMAXFlur)			{channel="max:thermostat:JEQ0437404:JEQ0618636:battery_low"}
+	String		maxFlurMode				"Modus"									<settings>		(gMAXFlur)			{channel="max:thermostat:JEQ0437404:JEQ0618636:mode"}
+	Number		maxFlurActual			"Aktuelle Temperatur [%.1f °C]"			<temperature>	(gMAXFlur)			{channel="max:thermostat:JEQ0437404:JEQ0618636:actual_temp"}
+	Number		maxFlurSetTemp			"Solltemperatur [%.1f °C]"				<temperature>	(gMAXFlur)			{channel="max:thermostat:JEQ0437404:JEQ0618636:set_temp"}
+	Number		maxFlurValve			"Ventilstellung [%.1f%%]"				<heating>		(gMAXFlur)			{channel="max:thermostat:JEQ0437404:JEQ0618636:valve"}    
+
+Group gMAXBad							"Heizung Bad"							<temperature>   (All, gOG, gOG_Bad)
+	Switch		maxBadBattery			"Batterie Thermostat ist leer"			<battery>		(gMAXBad)			{channel="max:thermostat:JEQ0437404:JEQ0618674:battery_low"}
+	String		maxBadMode				"Modus"									<settings>		(gMAXBad)			{channel="max:thermostat:JEQ0437404:JEQ0618674:mode"}
+	Number		maxBadActual			"Aktuelle Temperatur [%.1f °C]"			<temperature>	(gMAXBad)			{channel="max:thermostat:JEQ0437404:JEQ0618674:actual_temp"}
+	Number		maxBadSetTemp			"Solltemperatur [%.1f °C]"				<temperature>	(gMAXBad)			{channel="max:thermostat:JEQ0437404:JEQ0618674:set_temp"}
+	Number		maxBadValve				"Ventilstellung [%.1f%%]"				<heating>		(gMAXBad)			{channel="max:thermostat:JEQ0437404:JEQ0618674:valve"}        
+
+Group gMAXBuero							"Heizung Büro"							<temperature>   (All, gDG, gDG_Buero)
+	Switch		maxBueroBattery			"Batterie Thermostat ist leer"			<battery>		(gMAXBuero)			{channel="max:thermostat:JEQ0437404:JEQ0431741:battery_low"}
+	String		maxBueroMode			"Modus"									<settings>		(gMAXBuero)			{channel="max:thermostat:JEQ0437404:JEQ0431741:mode"}
+	Number		maxBueroActual			"Aktuelle Temperatur [%.1f °C]"			<temperature>	(gMAXBuero)			{channel="max:thermostat:JEQ0437404:JEQ0431741:actual_temp"}
+	Number		maxBueroSetTemp			"Solltemperatur [%.1f °C]"				<temperature>	(gMAXBuero)			{channel="max:thermostat:JEQ0437404:JEQ0431741:set_temp"}
+	Number		maxBueroValve			"Ventilstellung [%.1f%%]"				<heating>		(gMAXBuero)			{channel="max:thermostat:JEQ0437404:JEQ0431741:valve"}        
+
+Group gMAXKinder						"Heizung Kinderzimmer"					<temperature>   (All, gOG, gOG_Kinder)
+	Switch		maxKinderBattery		"Batterie Thermostat leer"				<battery>		(gMAXKinder)		{channel="max:thermostat:JEQ0437404:JEQ0618647:battery_low"}
+	String		maxKinderMode			"Modus"									<settings>		(gMAXKinder)		{channel="max:thermostat:JEQ0437404:JEQ0618647:mode"}
+	Number		maxKinderActual			"Aktuelle Temperatur [%.1f °C]"			<temperature>	(gMAXKinder)		{channel="max:thermostat:JEQ0437404:JEQ0618647:actual_temp"}
+	Number		maxKinderSetTemp		"Solltemperatur [%.1f °C]"				<temperature>	(gMAXKinder)		{channel="max:thermostat:JEQ0437404:JEQ0618647:set_temp"}
+	Number		maxKinderValve			"Ventilstellung [%.1f%%]"				<heating>		(gMAXKinder)		{channel="max:thermostat:JEQ0437404:JEQ0618647:valve"}

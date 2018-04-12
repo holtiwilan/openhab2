@@ -1,0 +1,9 @@
+Group gAstro																		<sun>			(All)
+	DateTime	SunsetTime				"Sonnenuntergang	[%1$tH:%1$tM]"		<sun>			(gAstro)			{ channel="astro:sun:local:set#start" }
+	DateTime	SunriseTime				"Sonnenaufgang		[%1$tH:%1$tM]"		<sun>			(gAstro)			{ channel="astro:sun:local:rise#end" }
+	String		Mondphase				"Mondphase			[MAP(mond.map):%s]"	<moon>			(gAstro)			{ channel="astro:moon:local:phase#name" }
+	Number		SunElevation			"Elevation [%.1f °]" 					<sun>			(gAstro)			{ channel="astro:sun:local:position#elevation" }
+	Switch		NightState				"Nacht"													(gAstro)
+	Switch		Sonnenaufgang_Event																				{ channel="astro:sun:local:set#start" }
+	Switch		Sonnenuntergang_Event																			{ channel="astro:sun:local:set#start" }
+	Switch		Vollmond_Event																					{ channel="astro:moon:local:phase#full" }

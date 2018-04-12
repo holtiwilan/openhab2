@@ -1,0 +1,51 @@
+/*Hauptgruppen */
+Group All
+Group gEG 			(All)
+Group gOG 			(All)
+Group gUG 			(All)
+Group gDG 			(All)
+Group gGarten 		(All)
+Group gAstro 		(All)
+Group gWetter 		(All)
+Group gAnwesend		(All)
+Group gInternet		(All)
+
+/* Keller */
+Group gUG_Flur		"Flur"			<corridor>	(gUG)
+Group gUG_Waschen	"Waschraum"		<softener>	(gUG)
+Group gUG_Mancave	"Mancave"		<niveau>	(gUG)
+
+/* Erdgeschoss */
+Group gEG_Wohnzimmer "Wohnzimmer" 	<living> 	(gEG)
+    Switch	NetworkLamp	"Vitrine"   <light>		(gEG_Wohnzimmer)	["Lighting"]
+    Switch	Sonoff1		"Vitrine"	<light>		(gEG_Wohnzimmer)	["Lighting"] {mqtt=">[mosquitto:/Sonoff1/gpio/12:command:ON:1],>[mosquitto:/Sonoff1/gpio/12:command:OFF:0],<[mosquitto:/Sonoff1/gpio/12:state:MAP(onoff.map)]", autoupdate="false"}
+    Group		gEG_Wohnzimmer_HiFi		<gEG_Wohnzimmer>		(All)
+        Switch DenonPower           "Power"                 (gEG_Wohnzimmer_HiFi)                 {denon="avrx1000#PW"}
+        Dimmer DenonVolume          "Volume [%.1f]"         (gEG_Wohnzimmer_HiFi)                 {denon="avrx1000#MV"}
+        Switch DenonMute            "Mute"                  (gEG_Wohnzimmer_HiFi)                 {denon="avrx1000#MU"}
+        String DenonSurroundMode    "Surround mode [%s]"    (gEG_Wohnzimmer_HiFi)                 {denon="avrx1000#SURROUNDMODE"}
+        Switch NetworkSubwoofer     "Subwoofer"             (gEG_Wohnzimmer_HiFi) ["Lighting"] 
+Group gEG_Kueche 	"Küche" 		<kitchen> 	(gEG)
+    Switch DashButton1  "Dash 1"    <switch>    (gEG_Kueche)        ["Lighting"]
+    Switch Sonoff2		"Küche"     <light>		(gEG_Kueche)	    ["Lighting"] {mqtt=">[mosquitto:/Sonoff2/gpio/12:command:ON:1],>[mosquitto:/Sonoff2/gpio/12:command:OFF:0],<[mosquitto:/Sonoff2/gpio/12:state:MAP(onoff.map)]", autoupdate="false"}
+Group gEG_Flur 		"Flur" 			<corridor> 	(gEG)
+Group gEG_Windfang 	"Windfang"		<corridor> 	(gEG)
+
+/* Obergeschoss */
+Group gOG_Bad 		"Bad" 			<batch> 	(gOG)
+Group gOG_Schlafen 	"Schlafzimmer" 	<bedroom> 	(gOG)
+Group gOG_Ankleide	"Ankleide" 		<wardrobe> 	(gOG)
+Group gOG_Flur 		"Flur" 			<corridor>	(gOG)
+Group gOG_Kinder	"Kinder" 		<bedroom> 	(gOG)
+
+/* Dachgeschoss */
+Group gDG_Flur		"Flur"			<corridor>	(gDG)
+Group gDG_Buero		"Büro"			<calendar>	(gDG)
+
+/* Garten */
+Group gGarten		"Garten"		<garden>	(gGarten)
+    Switch NichtBewaessern			"Bewässerung verhindern"	(gGarten)	["Switchable"]
+    Switch RegenReicht				"Regen reicht"				(gGarten)	["Switchable"]
+
+/* Vorgarten */
+Group gVorgarten	"Vorgarten"		<garden>	(gVorgarten)
