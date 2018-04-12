@@ -29,6 +29,7 @@ Group gEG_Kueche 	"Küche" 		<kitchen> 	(gEG)
     Switch DashButton1  "Dash 1"    <switch>    (gEG_Kueche)        ["Lighting"]
     Switch Sonoff2		"Küche"     <light>		(gEG_Kueche)	    ["Lighting"] {mqtt=">[mosquitto:/Sonoff2/gpio/12:command:ON:1],>[mosquitto:/Sonoff2/gpio/12:command:OFF:0],<[mosquitto:/Sonoff2/gpio/12:state:MAP(onoff.map)]", autoupdate="false"}
 Group gEG_Flur 		"Flur" 			<corridor> 	(gEG)
+// Hier muss dann novh das IKEA ding hin
 Group gEG_Windfang 	"Windfang"		<corridor> 	(gEG)
 
 /* Obergeschoss */
