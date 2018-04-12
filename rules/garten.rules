@@ -1,0 +1,106 @@
+rule "check Bewaesserung"
+when
+	Time cron "0 0/1 * * * ?"
+then
+	logInfo("Bewässerung","Regel feuert")
+	var Number hour = now.getHourOfDay	
+	if(RegenReicht.state.toString == "ON") {
+		logInfo("Bewässerung","Regen Reicht")
+		if ((hour == 7) || (hour == 19)) {
+			logInfo("Bewässerung","Es ist Bewässerungszeit")
+			postUpdate(NichtBewaessern, ON)
+		} else {
+			logInfo("Bewässerung","Es ist keine Bewässerungszeit")
+			sendCommand(NichtBewaessern, OFF)	
+		}
+	} else {
+		logInfo("Bewässerung","Regen Reicht nicht")
+		sendCommand(NichtBewaessern, OFF)
+	}
+end
+
+rule "Bewaesserung AUS"
+when
+	Item NichtBewaessern changed to ON or
+	Item RegenReicht changed to ON
+then
+	var Number hour = now.getHourOfDay	
+	if ((hour == 7)  || (hour == 19)) {
+    	postUpdate(NichtBewaessern, ON)
+	} else 
+	{
+    	postUpdate(NichtBewaessern, OFF)
+	}
+end
+
+rule "Bewaesserung AN"
+when
+	Item NichtBewaessern changed to OFF or
+	Item RegenReicht changed to OFF
+then
+	postUpdate(NichtBewaessern, OFF)
+end
+
+rule "Rasensprenger bleibt aus"
+    when
+    	Item Rain changed or
+    	Item Weather_Today_Icon changed or
+    	Item Weather_Tomorrow_Icon changed
+    then
+        // the rainfall threshold where we shutdown off irrigation
+        var rainThreshold = 1
+    
+    	// check for any rain in the last 24 hours
+        var rainInLast24Hours = Rain.maximumSince(now.minusHours(24), "rrd4j")
+    	
+    	// default to the current rain value in case there is nothing in our history
+    	var rain = Rain.state
+    	
+        if (rainInLast24Hours !== null)
+        	rain = rainInLast24Hours.state
+        	
+        // check if any rain is forecast
+        var rainToday = Weather_Today_Icon.state == "chanceflurries" ||
+        				Weather_Today_Icon.state == "chancerain" ||
+        				Weather_Today_Icon.state == "chancesleet" ||
+        				Weather_Today_Icon.state == "chancesnow" ||
+        				Weather_Today_Icon.state == "chancetstorms" ||
+        				Weather_Today_Icon.state == "flurries" ||    				
+        				Weather_Today_Icon.state == "rain" || 
+        				Weather_Today_Icon.state == "sleet" ||
+        				Weather_Today_Icon.state == "snow" ||
+        				Weather_Today_Icon.state == "tstorms"
+        				
+        var rainTomorrow = Weather_Tomorrow_Icon.state == "chanceflurries" ||
+        				   Weather_Tomorrow_Icon.state == "chancerain" ||
+        				   Weather_Tomorrow_Icon.state == "chancesleet" ||
+        				   Weather_Tomorrow_Icon.state == "chancesnow" ||
+        				   Weather_Tomorrow_Icon.state == "chancetstorms" ||
+        				   Weather_Tomorrow_Icon.state == "flurries" ||
+        				   Weather_Tomorrow_Icon.state == "rain" || 
+        				   Weather_Tomorrow_Icon.state == "sleet" ||
+        				   Weather_Tomorrow_Icon.state == "snow" ||
+        				   Weather_Tomorrow_Icon.state == "tstorms"
+           	
+    	// shutoff irrigation if there has been rain or rain is forecast
+        var logMessage = ""
+    	if (rain > rainThreshold) {
+    	    logMessage = "In den letzten 24 Stunden hat es  (" + rain + " mm) geregnet! - Rasen nicht bewässern!"
+    	} else if (rainToday) {
+    	    logMessage = "Heute soll es regnen - Rasen nicht bewässern!"
+    	} else if (rainTomorrow) {
+    		logMessage = "Morgen soll es regnen - Rasen nicht bewässern!"
+    	}
+    	
+    	if (logMessage != "") {
+    		if (RegenReicht.state == OFF) {
+            	logInfo("Rasensprenger", logMessage)
+    			postUpdate(RegenReicht, ON)
+    		}
+    	} else {
+    		if (RegenReicht.state == ON) {
+    	        logInfo("Rasensprenger", "Kein Regen in den letzten 24 Stunden und auch keiner ein Aussicht - Rasen bewässern!")
+    			postUpdate(RegenReicht, OFF)
+    		}
+    	}
+    end

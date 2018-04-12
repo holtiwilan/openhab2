@@ -1,0 +1,90 @@
+rule "Licht Unterschraenke Kueche"
+when 
+	Channel "amazondashbutton:dashbutton:ac-63-be-53-f0-14:press" triggered
+then	
+		
+	if (Sonoff2.state.toString == "ON") { 
+        sendCommand(Sonoff2, OFF)
+    } else {
+        sendCommand(Sonoff2, ON)
+    }
+end
+
+rule "Licht Vitrine"
+when 
+	Channel "amazondashbutton:dashbutton:ac-63-be-93-a3-84:press" triggered
+then	
+		
+	if (dashButton2.state.toString == "ON") { 
+        dashButton2.sendCommand(OFF)
+    } else {
+        dashButton2.sendCommand(ON)
+    }
+end
+
+rule "Radio An"
+when
+	Item DenonRadio changed to ON
+then
+	sendCommand(DenonPower, ON)
+	sendCommand(DenonTuner, ON)	
+end
+
+rule "Radio Aus"
+when
+	Item DenonRadio changed to OFF
+then
+	sendCommand(DenonPower, OFF)
+	sendCommand(DenonTuner, OFF)	
+end
+
+
+rule "Es wird Nacht"
+when
+	Item NightState changed to ON
+then
+	if(DenonPower.state == ON) {
+		sendCommand(Sonoff1, ON)
+	}
+end
+
+rule "Es wird Tag"
+when
+	Item NightState changed to OFF
+then
+	if(DenonPower.state == ON) {
+		sendCommand(Sonoff1, OFF)
+	}
+end
+
+rule "Reciever AN"
+when
+	Item DenonPower changed to ON
+then
+	if(NightState.state == ON) {
+		sendCommand(Sonoff1, ON)
+	}
+end
+
+rule "Reciever AUS"
+when
+	Item DenonPower changed to OFF
+then
+	sendCommand(Sonoff1, OFF)
+end
+
+rule "Subwoofer AN"
+when
+	Item DenonPower changed to ON or
+	Item networkSubwoofer received update ON
+then
+	sendHttpGetRequest("http://192.168.178.63/group3_socket1On")
+end
+
+rule "Subwoofer AUS"
+when
+	Item DenonPower changed to OFF or
+	Item networkSubwoofer received update OFF
+then
+	sendHttpGetRequest("http://192.168.178.63/group3_socket1Off")
+end

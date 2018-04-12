@@ -1,0 +1,6 @@
+Group gInternet													<qualityofservice>			(All)
+Number      INET_PING               "Ping [%.1f ms]"                                        (gInternet)
+Number      INET_DOWN               "Download [%.1f Mbit/s]"                                (gInternet)
+Number      INET_UP                 "Upload [%.1f Mbit/s]"                                  (gInternet)
+String      INET_IP                 "akt. IP-Adresse: [%s]"                                 (gInternet)
+Number      CHART_PERIOD                                                                    (gInternet)
