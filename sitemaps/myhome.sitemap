@@ -28,18 +28,18 @@ sitemap myhome label="Zuhause"{
 		Text label="Anwesenheiten" icon="presence" {
 				Group item=gAnwesend
 		}    
-		Frame label="EG" icon="groundfloor" {
+		Text label="EG" icon="groundfloor" {
 			Group item=gEG_Wohnzimmer
 			Group item=gEG_Kueche    
 			Group item=gEG_Windfang
 			Group item=gEG_Flur
 		}
-		Frame label="OG" icon="firstfloor" {
+		Text label="OG" icon="firstfloor" {
 			Group item=gOG_Bad    
 			Group item=gOG_Kinder    
 			Group item=gOG_Flur    
 		}
-		Frame label="DG" icon="attic" {
+		Text label="DG" icon="attic" {
 			Group item=gDG_Flur    
 			Group item=gDG_Buero    
 		}
