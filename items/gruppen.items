@@ -16,10 +16,9 @@ Group gUG_Waschen	"Waschraum"		<softener>	(gUG)
 Group gUG_Mancave	"Mancave"		<niveau>	(gUG)
 
 /* Erdgeschoss */
-Group gEG_Wohnzimmer "Wohnzimmer" 	<living> 	(gEG)
-    Switch	NetworkLamp	"Vitrine"   <light>		(gEG_Wohnzimmer)	["Lighting"]
+Group gEG_Wohnzimmer "Wohnzimmer" 	<sofa> 	(gEG)
     Switch	Sonoff1		"Vitrine"	<light>		(gEG_Wohnzimmer)	["Lighting"] {mqtt=">[mosquitto:/Sonoff1/gpio/12:command:ON:1],>[mosquitto:/Sonoff1/gpio/12:command:OFF:0],<[mosquitto:/Sonoff1/gpio/12:state:MAP(onoff.map)]", autoupdate="false"}
-    Group		gEG_Wohnzimmer_HiFi		<gEG_Wohnzimmer>		(All)
+    Group		gEG_Wohnzimmer_HiFi		<living>		(gEG_Wohnzimmer)
         Switch DenonPower           "Power"                 (gEG_Wohnzimmer_HiFi)                 {denon="avrx1000#PW"}
         Dimmer DenonVolume          "Volume [%.1f]"         (gEG_Wohnzimmer_HiFi)                 {denon="avrx1000#MV"}
         Switch DenonMute            "Mute"                  (gEG_Wohnzimmer_HiFi)                 {denon="avrx1000#MU"}
@@ -33,7 +32,7 @@ Group gEG_Flur 		"Flur" 			<corridor> 	(gEG)
 Group gEG_Windfang 	"Windfang"		<corridor> 	(gEG)
 
 /* Obergeschoss */
-Group gOG_Bad 		"Bad" 			<batch> 	(gOG)
+Group gOG_Bad 		"Bad" 			<bath> 	(gOG)
 Group gOG_Schlafen 	"Schlafzimmer" 	<bedroom> 	(gOG)
 Group gOG_Ankleide	"Ankleide" 		<wardrobe> 	(gOG)
 Group gOG_Flur 		"Flur" 			<corridor>	(gOG)

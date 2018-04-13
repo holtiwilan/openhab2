@@ -19,53 +19,32 @@ sitemap myhome label="Zuhause"{
     }
 	Frame label="Garten" icon="garden" {
         Group item=gGarten
-		Text label="Kamera" icon="camera"{
-			Webview url="http://192.168.178.31/videostream.cgi?user=admin&pwd=123456&resolution=32&rate=14" height=14
-		}
+		Webview url="http://192.168.178.32/videostream.cgi?user=admin&pwd=123456&resolution=32&rate=14" height=14
     }
 	Frame label="Vorgarten" icon="garden" {
-		Text label="Kamera" icon="camera"{
-			Webview url="http://192.168.178.32/videostream.cgi?user=admin&pwd=123456&resolution=32&rate=14" height=14
-		}
+			Webview url="http://192.168.178.31/videostream.cgi?user=admin&pwd=123456&resolution=32&rate=14" height=14
     }
     Frame label="Haus" {
 		Text label="Anwesenheiten" icon="presence" {
 				Group item=gAnwesend
 		}    
 		Frame label="EG" icon="groundfloor" {
-			Text label="Wohnzimmer" icon="sofa" {
-				Group item=gEG_Wohnzimmer
-			}
-			Text label="Küche" icon="kitchen" {
-				Group item=gEG_Kueche    
-			}
-			Text label="Windfang" icon="corridor" {
-				Group item=gEG_Windfang
-			}
-			Text label="Flur" icon="corridor" {
-				Group item=gEG_Flur
-			}
+			Group item=gEG_Wohnzimmer
+			Group item=gEG_Kueche    
+			Group item=gEG_Windfang
+			Group item=gEG_Flur
 		}
 		Frame label="OG" icon="firstfloor" {
-			Text label="Bad" icon="bath" {
-				Group item=gOG_Bad    
-			}
-			Text label="Kinderzimmer" icon="girl_1" {
-				Group item=gOG_Kinder    
-			}
-			Text label="Treppenhaus" icon="corridor" {
-				Group item=gOG_Flur    
-			}
+			Group item=gOG_Bad    
+			Group item=gOG_Kinder    
+			Group item=gOG_Flur    
 		}
 		Frame label="DG" icon="attic" {
-			Text label="Flur" icon="corridor" {
-				Group item=gDG_Flur    
-			}
-			Text label="Büro" icon="office" {
-				Group item=gDG_Buero    
-			}
+			Group item=gDG_Flur    
+			Group item=gDG_Buero    
 		}
 
 	}
     
 }
+

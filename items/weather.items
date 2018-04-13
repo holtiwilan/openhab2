@@ -67,4 +67,3 @@ Number   Wind_Chill_F         "Wind chill [%.2f °F]"     {weather="locationId=h
 String   Station_Name         "Station Name [%s]"        {weather="locationId=home, type=station, property=name"}
 String   Station_Id           "Station Id [%s]"          {weather="locationId=home, type=station, property=id"}
 Number   Station_Latitude     "Station Latitude [%.6f]"  {weather="locationId=home, type=station, property=latitude, scale=6"}
-Number   Station_Longitude    "Station Longitude [%.6f]" {weather="locationId=home, type=station, property=longitude, scale=6"}
