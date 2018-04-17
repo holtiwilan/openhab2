@@ -1,3 +1,5 @@
 Group:Switch:OR(ON, OFF) gAnwesend		<presence>		(All)
-    Switch PresenceTim "Anwesenheit Tim@Home"           (gAnwesend)
-    Switch PresenceSandra "Anwesenheit Sandra@Home"	    (gAnwesend)
+    Contact PresenceTim     "Anwesenheit Tim@Home [MAP(presence.map):%s]"     <present>      (gAnwesend)   {fritzboxtr064="maconline:00-EC-0A-70-F7-2E" }
+    Contact PresenceSandra  "Anwesenheit Sandra@Home [MAP(presence.map):%s]"	<present>    (gAnwesend)    {fritzboxtr064="maconline:E4-46-DA-6C-1C-44" }
+    Contact PresenceTilman  "Anwesenheit Tilman@Home [MAP(presence.map):%s]"	<present>    (gAnwesend)    {fritzboxtr064="maconline:44-6E-E5-4C-42-BF" }
+    

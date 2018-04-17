@@ -61,6 +61,7 @@ rule "Reciever AN"
 when
 	Item DenonPower changed to ON
 then
+	sendCommand(Subwoofer, ON)
 	if(NightState.state == ON) {
 		sendCommand(Sonoff1, ON)
 	}
@@ -70,21 +71,6 @@ rule "Reciever AUS"
 when
 	Item DenonPower changed to OFF
 then
+	sendCommand(Subwoofer, OFF)
 	sendCommand(Sonoff1, OFF)
-end
-
-rule "Subwoofer AN"
-when
-	Item DenonPower changed to ON or
-	Item networkSubwoofer received update ON
-then
-	sendHttpGetRequest("http://192.168.178.63/group3_socket1On")
-end
-
-rule "Subwoofer AUS"
-when
-	Item DenonPower changed to OFF or
-	Item networkSubwoofer received update OFF
-then
-	sendHttpGetRequest("http://192.168.178.63/group3_socket1Off")
 end

@@ -3,8 +3,8 @@ when
     System started
 then
     createTimer(now.plusSeconds(180)) [ |
-        if (now.isAfter((SunsetTime.state as DateTimeType).calendar.timeInMillis) ||
-            now.isBefore((SunriseTime.state as DateTimeType).calendar.timeInMillis)
+        if (now.isAfter((SunsetTime.state as DateTimeType).zonedDateTime.toInstant.toEpochMilli) ||
+            now.isBefore((SunriseTime.state as DateTimeType).zonedDateTime.toInstant.toEpochMilli)
         ) {
             postUpdate(NightState, ON)
         } else {

@@ -1,6 +1,7 @@
 sitemap myhome label="Zuhause"{
     Frame label="Allgemein" {
-        Group item=gAstro
+		Text item=Weather_Today_Icon
+		 Group item=gAstro
 		Text label="Internetgeschwindigkeit" icon="network" {
 			Text item=INET_PING icon="network"
 			Text item=INET_DOWN icon="returnpipe"
@@ -29,6 +30,7 @@ sitemap myhome label="Zuhause"{
 				Group item=gAnwesend
 		}    
 		Text label="EG" icon="groundfloor" {
+			Slider item=gIKEA_EG_Flur_Dimmer label="Dimmer Flur [%.1f]" icon="light"
 			Group item=gEG_Wohnzimmer
 			Group item=gEG_Kueche    
 			Group item=gEG_Windfang

@@ -1,0 +1,63 @@
+rule "check Dimmerstatus"
+when
+	Time cron "0 0/1 * * * ?"
+then
+	logInfo("IKEA","Dimmerstatus Prüfen")
+	var Number hour = now.getHourOfDay	
+	if ((hour >= 21) && (hour <= 7)) {
+        if(LichterDimmen.state.toString == "OFF") {
+            sendCommand(LichterDimmen, ON)
+            sendCommand(LichterFlur, OFF)
+        }    
+    } else {
+        if(LichterDimmen.state.toString == "ON") {
+            sendCommand(LichterDimmen, OFF)
+            sendCommand(LichterFlur, OFF)
+        }
+    }
+end
+
+rule "Licht im Flur Dimmen"
+when
+	Item LichterDimmen changed to ON
+then
+    logInfo("IKEA","Licht dimmen")
+    sendCommand(TRADFRIBulbGU10W400lm_Brightness, "50")
+    sendCommand(TRADFRIBulbGU10W400lm2_Brightness, "50")
+    sendCommand(TRADFRIBulbGU10W400lm3_Brightness, "50")
+    sendCommand(Windfang_Brightness, "50")
+end
+
+rule "Licht im Flur"
+when
+	Item LichterFlur changed to ON
+then
+    logInfo("IKEA","Licht im Flur an")
+    sendCommand(TRADFRIBulbGU10W400lm_Brightness, "100")
+    sendCommand(TRADFRIBulbGU10W400lm2_Brightness, "100")
+    sendCommand(TRADFRIBulbGU10W400lm3_Brightness, "100")
+    sendCommand(Windfang_Brightness, "100")
+end
+
+rule "Licht im Flur aus"
+when
+	Item LichterFlur changed to OFF
+then
+    logInfo("IKEA","Licht im Flur aus")
+    sendCommand(TRADFRIBulbGU10W400lm_Brightness, "0")
+    sendCommand(TRADFRIBulbGU10W400lm2_Brightness, "0")
+    sendCommand(TRADFRIBulbGU10W400lm3_Brightness, "0")
+    sendCommand(Windfang_Brightness, "0")
+end
+
+
+rule "Licht im Flur nicht Dimmen"
+when
+	Item LichterDimmen changed to OFF
+then
+    logInfo("IKEA","Licht nicht mehr dimmen")
+    sendCommand(TRADFRIBulbGU10W400lm_Brightness, "100")
+    sendCommand(TRADFRIBulbGU10W400lm2_Brightness, "100")
+    sendCommand(TRADFRIBulbGU10W400lm3_Brightness, "100")
+    sendCommand(Windfang_Brightness, "100")
+end

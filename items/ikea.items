@@ -1,0 +1,17 @@
+Group gIKEA_EG_Wohnzimmer "Licht Wohnzimmer" 	<light> 	(gEG_Wohnzimmer)
+    Dimmer  Leselampe_Brightness                    "Helligkeit"                (gIKEA_EG_Wohnzimmer)   {channel="tradfri:0100:ece7f7ff:brightness"}
+    Number   WirelessDimmerLeselampe_BatteryLevel   "Batterieladung"            (gIKEA_EG_Wohnzimmer)   {channel="tradfri:0820:gwb8d7af2ba875:65541:battery_level"}
+    Switch   WirelessDimmerLeselampe_BatteryLow     "Niedriger Batteriestatus"  (gIKEA_EG_Wohnzimmer)   {channel="tradfri:0820:gwb8d7af2ba875:65541:battery_low"}
+
+Group:Dimmer:AVG gIKEA_EG_Flur_Dimmer "Alles Dimmen" <light> (gEG_Flur)
+    Dimmer   TRADFRIBulbGU10W400lm_Brightness   "Helligkeit"                    (gIKEA_EG_Flur_Dimmer)         {channel="tradfri:0100:gwb8d7af2ba875:65542:brightness"}
+    Dimmer   TRADFRIBulbGU10W400lm2_Brightness   "Helligkeit"                   (gIKEA_EG_Flur_Dimmer)         {channel="tradfri:0100:gwb8d7af2ba875:65543:brightness"}
+    Dimmer   TRADFRIBulbGU10W400lm3_Brightness   "Helligkeit"                   (gIKEA_EG_Flur_Dimmer)         {channel="tradfri:0100:gwb8d7af2ba875:65544:brightness"}
+Group gIKEA_EG_Flur "Bewegungsmelder Flur" 	<light> 	(gEG_Flur)
+    Number   MotionSensorFlur_BatteryLevel   "Batterieladung"                   (gIKEA_EG_Flur)         {channel="tradfri:0107:gwb8d7af2ba875:65538:battery_level"}
+    Switch   MotionSensorFlur_BatteryLow     "Niedriger Batteriestatus"         (gIKEA_EG_Flur)         {channel="tradfri:0107:gwb8d7af2ba875:65538:battery_low"}
+ 
+Group gIKEA_EG_Windfang "Licht Windfang" 	<light> 	(gEG_Windfang)
+Number   MotionSensorWindfang_BatteryLevel   "Batterieladung"                   (gIKEA_EG_Windfang)     {channel="tradfri:0107:gwb8d7af2ba875:65540:battery_level"}
+Switch   MotionSensorWindfang_BatteryLow     "Niedriger Batteriestatus"         (gIKEA_EG_Windfang)     {channel="tradfri:0107:gwb8d7af2ba875:65540:battery_low"}
+Dimmer   Windfang_Brightness                 "Helligkeit"                       (gIKEA_EG_Windfang)     {channel="tradfri:0100:gwb8d7af2ba875:65539:brightness"}

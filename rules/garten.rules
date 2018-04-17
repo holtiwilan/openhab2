@@ -56,11 +56,7 @@ rule "Rasensprenger bleibt aus"
     	// default to the current rain value in case there is nothing in our history
     	var rain = Rain.state
     	
-<<<<<<< HEAD
         if (rainInLast24Hours !== null)
-=======
-        if (rainInLast24Hours != null)
->>>>>>> b5f95f01893f62c64b30489ba13c9bafb046674e
         	rain = rainInLast24Hours.state
         	
         // check if any rain is forecast
@@ -107,8 +103,4 @@ rule "Rasensprenger bleibt aus"
     			postUpdate(RegenReicht, OFF)
     		}
     	}
-<<<<<<< HEAD
     end
-=======
-    end
->>>>>>> b5f95f01893f62c64b30489ba13c9bafb046674e

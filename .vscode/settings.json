@@ -1,0 +1,5 @@
+{
+    "openhab.host": "192.168.178.68",
+    "openhab.port": 8080,
+    "openhab.useRestApi": true
+}
