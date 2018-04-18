@@ -9,7 +9,8 @@ then
             sendCommand(LichterDimmen, ON)
             sendCommand(LichterFlur, OFF)
         }    
-    } else {
+    } 
+    if ((hour >= 7) && (hour <= 21)) { {
         if(LichterDimmen.state.toString == "ON") {
             sendCommand(LichterDimmen, OFF)
             sendCommand(LichterFlur, OFF)
@@ -26,6 +27,17 @@ then
     sendCommand(TRADFRIBulbGU10W400lm2_Brightness, "50")
     sendCommand(TRADFRIBulbGU10W400lm3_Brightness, "50")
     sendCommand(Windfang_Brightness, "50")
+end
+
+rule "Licht im Flur nicht Dimmen"
+when
+	Item LichterDimmen changed to OFF
+then
+    logInfo("IKEA","Licht nicht mehr dimmen")
+    sendCommand(TRADFRIBulbGU10W400lm_Brightness, "100")
+    sendCommand(TRADFRIBulbGU10W400lm2_Brightness, "100")
+    sendCommand(TRADFRIBulbGU10W400lm3_Brightness, "100")
+    sendCommand(Windfang_Brightness, "100")
 end
 
 rule "Licht im Flur"
@@ -50,14 +62,3 @@ then
     sendCommand(Windfang_Brightness, "0")
 end
 
-
-rule "Licht im Flur nicht Dimmen"
-when
-	Item LichterDimmen changed to OFF
-then
-    logInfo("IKEA","Licht nicht mehr dimmen")
-    sendCommand(TRADFRIBulbGU10W400lm_Brightness, "100")
-    sendCommand(TRADFRIBulbGU10W400lm2_Brightness, "100")
-    sendCommand(TRADFRIBulbGU10W400lm3_Brightness, "100")
-    sendCommand(Windfang_Brightness, "100")
-end
