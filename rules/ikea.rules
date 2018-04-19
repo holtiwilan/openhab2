@@ -4,13 +4,13 @@ when
 then
 	logInfo("IKEA","Dimmerstatus Prüfen")
 	var Number hour = now.getHourOfDay	
-	if ((hour >= 21) && (hour <= 7)) {
+	if ((hour >= 21) || (hour <= 7)) {
         if(LichterDimmen.state.toString == "OFF") {
             sendCommand(LichterDimmen, ON)
             sendCommand(LichterFlur, OFF)
         }    
     } 
-    if ((hour >= 7) && (hour <= 21)) { {
+    if ((hour >= 7) && (hour <= 21)) {
         if(LichterDimmen.state.toString == "ON") {
             sendCommand(LichterDimmen, OFF)
             sendCommand(LichterFlur, OFF)
