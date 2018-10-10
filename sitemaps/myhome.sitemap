@@ -18,17 +18,20 @@ sitemap myhome label="Zuhause"{
 			Chart item=INET_UP period=W refresh=3600 visibility=[CHART_PERIOD==2]
 		}
     }
-	Frame label="Garten" icon="garden" {
+	/*Frame label="Garten" icon="garden" {
         Group item=gGarten
 		Webview url="http://192.168.178.32/videostream.cgi?user=admin&pwd=123456&resolution=32&rate=14" height=14
     }
 	Frame label="Vorgarten" icon="garden" {
 			Webview url="http://192.168.178.31/videostream.cgi?user=admin&pwd=123456&resolution=32&rate=14" height=14
-    }
+    }*/
     Frame label="Haus" {
 		Text label="Anwesenheiten" icon="presence" {
 				Group item=gAnwesend
 		}    
+		Text label="Keller" icon="cellar" {
+			Group item=gUG_Mancave
+		}
 		Text label="EG" icon="groundfloor" {
 			Slider item=gIKEA_EG_Flur_Dimmer label="Dimmer Flur [%.1f]" icon="light"
 			Group item=gEG_Wohnzimmer

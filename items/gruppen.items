@@ -14,6 +14,8 @@ Group gInternet		(All)
 Group gUG_Flur		"Flur"			<corridor>	(gUG)
 Group gUG_Waschen	"Waschraum"		<softener>	(gUG)
 Group gUG_Mancave	"Mancave"		<niveau>	(gUG)
+    Switch	Verstaerker_Keller		"Verstärker"	<light>		(gUG_Mancave)	["Lighting"] { mqtt=">[mosquitto:cmnd/sonoff-verstaerker/POWER:command:*:default],<[mosquitto:stat/sonoff-verstaerker/POWER:state:default]" }
+
 
 /* Erdgeschoss */
 Group gEG_Wohnzimmer "Wohnzimmer" 	<sofa> 	(gEG)
@@ -47,8 +49,10 @@ Group gDG_Buero		"Büro"			<calendar>	(gDG)
 
 /* Garten */
 Group gGarten		"Garten"		<garden>	(gGarten)
-    Switch NichtBewaessern			"Bewässerung verhindern"	(gGarten)	["Switchable"]
     Switch RegenReicht				"Regen reicht"				(gGarten)	["Switchable"]
+    Switch Bewaessern				"Bewässerern"	(gGarten)	["Switchable"]
+    Switch Rasensprenger			"Rasensprenger"	<light>		(gGarten)	["Lighting"] { mqtt=">[mosquitto:cmnd/sonoff-rasensprenger/POWER:command:*:default],<[mosquitto:stat/sonoff-rasensprenger/POWER:state:default]" }
+
 
 /* Vorgarten */
 Group gVorgarten	"Vorgarten"		<garden>	(gVorgarten)

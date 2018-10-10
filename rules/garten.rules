@@ -1,45 +1,38 @@
+var Timer Rasensprenger_timer = null	
+
+rule "Rasen bewaessern"
+when
+    Item Bewaessern changed
+then
+        Rasensprenger_timer?.cancel // the ? will skip this line if timer is null
+	logInfo("Bewässern","Status ist " +LichterDimmen.state.toString)
+        switch Bewaessern.state.toString {
+            case "ON": {
+		sendCommand(Rasensprenger, ON)
+                Rasensprenger_timer = createTimer(now.plusMinutes(30), [| 
+                    sendCommand(Rasensprenger, OFF) 
+		    postUpdate(Bewaessern, OFF)
+                ])
+            }
+            case "OFF": {
+		Rasensprenger_timer.cancel()                
+		sendCommand(Rasensprenger, OFF)
+            }
+        }
+end
+
 rule "check Bewaesserung"
 when
-	Time cron "0 0/1 * * * ?"
+	Time cron "0 0 7 * * ?" or
+	Time cron "0 0 19 * * ?"
 then
 	logInfo("Bewässerung","Regel feuert")
-	var Number hour = now.getHourOfDay	
-	if(RegenReicht.state.toString == "ON") {
-		logInfo("Bewässerung","Regen Reicht")
-		if ((hour == 7) || (hour == 19)) {
-			logInfo("Bewässerung","Es ist Bewässerungszeit")
-			postUpdate(NichtBewaessern, ON)
-		} else {
-			logInfo("Bewässerung","Es ist keine Bewässerungszeit")
-			sendCommand(NichtBewaessern, OFF)	
-		}
-	} else {
+	if(RegenReicht.state.toString == "OFF") {
 		logInfo("Bewässerung","Regen Reicht nicht")
-		sendCommand(NichtBewaessern, OFF)
+		sendCommand(Bewaessern, ON)
 	}
 end
 
-rule "Bewaesserung AUS"
-when
-	Item NichtBewaessern changed to ON or
-	Item RegenReicht changed to ON
-then
-	var Number hour = now.getHourOfDay	
-	if ((hour == 7)  || (hour == 19)) {
-    	postUpdate(NichtBewaessern, ON)
-	} else 
-	{
-    	postUpdate(NichtBewaessern, OFF)
-	}
-end
-
-rule "Bewaesserung AN"
-when
-	Item NichtBewaessern changed to OFF or
-	Item RegenReicht changed to OFF
-then
-	postUpdate(NichtBewaessern, OFF)
-end
 
 rule "Rasensprenger bleibt aus"
     when
@@ -95,12 +88,12 @@ rule "Rasensprenger bleibt aus"
     	if (logMessage != "") {
     		if (RegenReicht.state == OFF) {
             	logInfo("Rasensprenger", logMessage)
-    			postUpdate(RegenReicht, ON)
+    			sendCommand(RegenReicht, ON)
     		}
     	} else {
     		if (RegenReicht.state == ON) {
-    	        logInfo("Rasensprenger", "Kein Regen in den letzten 24 Stunden und auch keiner ein Aussicht - Rasen bewässern!")
-    			postUpdate(RegenReicht, OFF)
+    	        	logInfo("Rasensprenger", "Kein Regen in den letzten 24 Stunden und auch keiner ein Aussicht - Rasen bewässern!")
+    			sendCommand(RegenReicht, OFF)
     		}
     	}
     end

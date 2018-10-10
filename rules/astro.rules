@@ -17,7 +17,7 @@ rule "Update NightState"
 when
     Item SunElevation changed
 then
-    if(SunElevation.state < 3){
+    if(SunElevation.state < 4){
         if(NightState.state != ON) postUpdate(NightState, ON)
     } else {
         if(NightState.state != OFF) postUpdate(NightState, OFF)
