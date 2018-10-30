@@ -31,6 +31,8 @@ sitemap myhome label="Zuhause"{
 		}    
 		Text label="Keller" icon="cellar" {
 			Group item=gUG_Mancave
+			Group item=gUG_Waschen
+			
 		}
 		Text label="EG" icon="groundfloor" {
 			Slider item=gIKEA_EG_Flur_Dimmer label="Dimmer Flur [%.1f]" icon="light"

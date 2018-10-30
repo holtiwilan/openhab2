@@ -1,2 +1,9 @@
+NULL=NULL
+ON=1
+OFF=0
 0=OFF
 1=ON
+ON=on
+OFF=off
+off=OFF
+on=ON

@@ -1,5 +1,5 @@
-Group gIKEA_EG_Wohnzimmer "Licht Wohnzimmer" 	<light> 	(gEG_Wohnzimmer)
-    Dimmer  Leselampe_Brightness                    "Helligkeit"                (gIKEA_EG_Wohnzimmer)   {channel="tradfri:0100:ece7f7ff:brightness"}
+Group gIKEA_EG_Wohnzimmer 	<light> 	(gEG_Wohnzimmer)
+    Dimmer  Leselampe_Brightness                    "Leselampe Wohnzimmer"      (gIKEA_EG_Wohnzimmer)   {channel="tradfri:0100:ece7f7ff:brightness"}
     Number   WirelessDimmerLeselampe_BatteryLevel   "Batterieladung"            (gIKEA_EG_Wohnzimmer)   {channel="tradfri:0820:gwb8d7af2ba875:65541:battery_level"}
     Switch   WirelessDimmerLeselampe_BatteryLow     "Niedriger Batteriestatus"  (gIKEA_EG_Wohnzimmer)   {channel="tradfri:0820:gwb8d7af2ba875:65541:battery_low"}
 

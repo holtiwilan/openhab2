@@ -1,0 +1,47 @@
+rule "Tim zuhause"
+when
+    Item PresenceTim changed to CLOSED
+then
+    logInfo("Anwesend","Tim ist zuhause")
+    sendPushbulletNote("tim.holzhausen@gmail.com", "Anwesend", "Tim ist zuhause angekommen")
+end
+
+rule "Tim nicht zuhause"
+when
+    Item PresenceTim changed to OPEN
+then
+    logInfo("Anwesend","Tim ist nicht zuhause")
+    sendPushbulletNote("tim.holzhausen@gmail.com", "Anwesend", "Tim hat das Zuhause verlassen")
+end
+
+rule "sandra zuhause"
+when
+    Item PresenceSandra changed to CLOSED
+then
+    logInfo("Anwesend","Sandra ist zuhause")
+    sendPushbulletNote("tim.holzhausen@gmail.com", "Anwesend", "Sandra ist zuhause angekommen")
+end
+
+rule "Sandra nicht zuhause"
+when
+    Item PresenceSandra changed to OPEN
+then
+    logInfo("Anwesend","Sandra ist nicht zuhause")
+    sendPushbulletNote("tim.holzhausen@gmail.com", "Anwesend", "Sandra hat das Zuhause verlassen")
+end
+
+rule "Tilman zuhause"
+when
+    Item PresenceTilman changed to CLOSED
+then
+    logInfo("Anwesend","Tilman ist zuhause")
+    sendPushbulletNote("tim.holzhausen@gmail.com", "Anwesend", "Tilman ist zuhause angekommen")
+end
+
+rule "Tilman nicht zuhause"
+when
+    Item PresenceTilman changed to OPEN
+then
+    logInfo("Anwesend","Tilman ist nicht zuhause")
+    sendPushbulletNote("tim.holzhausen@gmail.com", "Anwesend", "Tilman hat das Zuhause verlassen")
+end

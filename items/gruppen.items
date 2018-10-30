@@ -13,6 +13,8 @@ Group gInternet		(All)
 /* Keller */
 Group gUG_Flur		"Flur"			<corridor>	(gUG)
 Group gUG_Waschen	"Waschraum"		<softener>	(gUG)
+    Switch	ShellyWaschen		"Waschkeller"	<light>		(gUG_Waschen)	["Lighting"] {mqtt=">[mosquitto:shellies/shelly1-32C488/relay/0/command:command:*:MAP(onoff.map)],<[mosquitto:shellies/shelly1-32C488/relay/0:state:MAP(onoff.map)]", autoupdate="false"}
+                                                                                          
 Group gUG_Mancave	"Mancave"		<niveau>	(gUG)
     Switch	Verstaerker_Keller		"Verstärker"	<light>		(gUG_Mancave)	["Lighting"] { mqtt=">[mosquitto:cmnd/sonoff-verstaerker/POWER:command:*:default],<[mosquitto:stat/sonoff-verstaerker/POWER:state:default]" }
 
@@ -32,6 +34,7 @@ Group gEG_Kueche 	"Küche" 		<kitchen> 	(gEG)
 Group gEG_Flur 		"Flur" 			<corridor> 	(gEG)
     Switch LichterDimmen	"Licht im Flur dimmen"	    (gEG_Flur)	["Switchable"]
     Switch LichterFlur	"Licht im Flur"	(gEG_Flur)	["Switchable"]
+    Number:Temperature   FRITZDECTRep1002_Temperature (gEG_Flur)   ["Temperatur"]   {channel="avmfritz:FRITZ_DECT_Repeater_100:192_168_178_1:087610928985:temperature"}    Switch RegenReicht				"Regen reicht"				(gGarten)	["Switchable"]
     
 Group gEG_Windfang 	"Windfang"		<corridor> 	(gEG)
 Dimmer   TRADFRIBulbGU10W400lm_Brightness   "Helligkeit"   {channel="tradfri:0100:gwb8d7af2ba875:65542:brightness"}
@@ -48,11 +51,10 @@ Group gDG_Flur		"Flur"			<corridor>	(gDG)
 Group gDG_Buero		"Büro"			<calendar>	(gDG)
 
 /* Garten */
-Group gGarten		"Garten"		<garden>	(gGarten)
-    Switch RegenReicht				"Regen reicht"				(gGarten)	["Switchable"]
     Switch Bewaessern				"Bewässerern"	(gGarten)	["Switchable"]
     Switch Rasensprenger			"Rasensprenger"	<light>		(gGarten)	["Lighting"] { mqtt=">[mosquitto:cmnd/sonoff-rasensprenger/POWER:command:*:default],<[mosquitto:stat/sonoff-rasensprenger/POWER:state:default]" }
 
 
 /* Vorgarten */
 Group gVorgarten	"Vorgarten"		<garden>	(gVorgarten)
+
