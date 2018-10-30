@@ -12,9 +12,7 @@ Group gInternet		(All)
 
 /* Keller */
 Group gUG_Flur		"Flur"			<corridor>	(gUG)
-Group gUG_Waschen	"Waschraum"		<softener>	(gUG)
-    Switch	ShellyWaschen		"Waschkeller"	<light>		(gUG_Waschen)	["Lighting"] {mqtt=">[mosquitto:shellies/shelly1-32C488/relay/0/command:command:*:MAP(onoff.map)],<[mosquitto:shellies/shelly1-32C488/relay/0:state:MAP(onoff.map)]", autoupdate="false"}
-                                                                                          
+Group gUG_Waschen	"Waschraum"		<softener>	(gUG)                                                                                      
 Group gUG_Mancave	"Mancave"		<niveau>	(gUG)
     Switch	Verstaerker_Keller		"Verstärker"	<light>		(gUG_Mancave)	["Lighting"] { mqtt=">[mosquitto:cmnd/sonoff-verstaerker/POWER:command:*:default],<[mosquitto:stat/sonoff-verstaerker/POWER:state:default]" }
 

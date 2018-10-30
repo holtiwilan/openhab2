@@ -1,0 +1,1 @@
+Switch	ShellyWaschen		"Waschkeller"	<light>		(gUG_Waschen)	["Lighting"] {mqtt=">[mosquitto:shellies/shelly1-32C488/relay/0/command:command:*:MAP(onoff.map)],<[mosquitto:shellies/shelly1-32C488/relay/0:state:MAP(onoff.map)]", autoupdate="false"}
