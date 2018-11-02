@@ -11,8 +11,9 @@ Group gAnwesend		(All)
 Group gInternet		(All)
 
 /* Keller */
-Group gUG_Flur		"Flur"			<corridor>	(gUG)
-Group gUG_Waschen	"Waschraum"		<softener>	(gUG)                                                                                      
+Group gUG_Waschen	"Waschraum"		<softener>	(gUG)    
+    Switch	ShellyWaschen		"Waschkeller"	<light>		(gUG_Waschen)	["Lighting"] {mqtt=">[mosquitto:shellies/shelly1-32C488/relay/0/command:command:*:MAP(onoff.map)],<[mosquitto:shellies/shelly1-32C488/relay/0:state:MAP(onoff.map)]", autoupdate="false"}
+
 Group gUG_Mancave	"Mancave"		<niveau>	(gUG)
     Switch	Verstaerker_Keller		"Verstärker"	<light>		(gUG_Mancave)	["Lighting"] { mqtt=">[mosquitto:cmnd/sonoff-verstaerker/POWER:command:*:default],<[mosquitto:stat/sonoff-verstaerker/POWER:state:default]" }
 
@@ -30,13 +31,10 @@ Group gEG_Kueche 	"Küche" 		<kitchen> 	(gEG)
     Switch DashButton1  "Dash 1"    <switch>    (gEG_Kueche)        ["Lighting"]
     Switch Sonoff2		"Küche"     <light>		(gEG_Kueche)	    ["Lighting"] {mqtt=">[mosquitto:/Sonoff2/gpio/12:command:ON:1],>[mosquitto:/Sonoff2/gpio/12:command:OFF:0],<[mosquitto:/Sonoff2/gpio/12:state:MAP(onoff.map)]", autoupdate="false"}
 Group gEG_Flur 		"Flur" 			<corridor> 	(gEG)
-    Switch LichterDimmen	"Licht im Flur dimmen"	    (gEG_Flur)	["Switchable"]
-    Switch LichterFlur	"Licht im Flur"	(gEG_Flur)	["Switchable"]
+    Switch LichterDimmen	"Licht im Flur dimmen"	    (gEG_Flur)	["Lighting"]
+    Switch LichterFlur	"Licht im Flur"	(gEG_Flur)	["Lighting"]
     Number:Temperature   FRITZDECTRep1002_Temperature (gEG_Flur)   ["Temperatur"]   {channel="avmfritz:FRITZ_DECT_Repeater_100:192_168_178_1:087610928985:temperature"}    Switch RegenReicht				"Regen reicht"				(gGarten)	["Switchable"]
     
-Group gEG_Windfang 	"Windfang"		<corridor> 	(gEG)
-Dimmer   TRADFRIBulbGU10W400lm_Brightness   "Helligkeit"   {channel="tradfri:0100:gwb8d7af2ba875:65542:brightness"}
-
 /* Obergeschoss */
 Group gOG_Bad 		"Bad" 			<bath> 	(gOG)
 Group gOG_Schlafen 	"Schlafzimmer" 	<bedroom> 	(gOG)
@@ -46,7 +44,7 @@ Group gOG_Kinder	"Kinder" 		<bedroom> 	(gOG)
 
 /* Dachgeschoss */
 Group gDG_Flur		"Flur"			<corridor>	(gDG)
-Group gDG_Buero		"Büro"			<calendar>	(gDG)
+Group gDG_Buero		"Büro"			<bedroom>	(gDG)
 
 /* Garten */
     Switch Bewaessern				"Bewässerern"	(gGarten)	["Switchable"]
