@@ -1,0 +1,30 @@
+Group gXiaomi_EG_Flur "Flur"  (gEG_Flur)
+Switch   XiaomiMiSmartHomeGateway_JoinPermission     "Enable Device Inclusion"                 (gXiaomi_EG_Flur)    {channel="mihome:gateway:7c49ebb1dc1b:joinPermission"}
+Dimmer   XiaomiMiSmartHomeGateway_Brightness         "Brightness"                              (gXiaomi_EG_Flur)    {channel="mihome:gateway:7c49ebb1dc1b:brightness"}
+Number   XiaomiMiSmartHomeGateway_Illumination       "Illumination"                            (gXiaomi_EG_Flur)    {channel="mihome:gateway:7c49ebb1dc1b:illumination"}
+Color    XiaomiMiSmartHomeGateway_Color              "Color"                                   (gXiaomi_EG_Flur)    {channel="mihome:gateway:7c49ebb1dc1b:color"}
+Dimmer   XiaomiMiSmartHomeGateway_ColorTemperature   "Color Temperature"                       (gXiaomi_EG_Flur)    {channel="mihome:gateway:7c49ebb1dc1b:colorTemperature"}
+Switch   XiaomiMiSmartHomeGateway_EnableSound        "Switch to turn sound off when playing"   (gXiaomi_EG_Flur)    {channel="mihome:gateway:7c49ebb1dc1b:enableSound"}
+Number   XiaomiMiSmartHomeGateway_Sound              "Sound Selector"                          (gXiaomi_EG_Flur)    {channel="mihome:gateway:7c49ebb1dc1b:sound"}
+Dimmer   XiaomiMiSmartHomeGateway_Volume             "Sound Volume"                            (gXiaomi_EG_Flur)    {channel="mihome:gateway:7c49ebb1dc1b:volume"}
+
+Group gXiaomi_WZ_Tuer "Wohnzimmer"	(gEG_Wohnzimmer)
+Contact    WohnzimmerDoorWindowSensor_IsOpen             "Open Status [%s]"                    (gXiaomi_WZ_Tuer)  {channel="mihome:sensor_magnet_aq2:158d0002722d11:isOpen"}
+DateTime   WohnzimmerDoorWindowSensor_LastOpened         "Last Time Opened (Date/Time)"   (gXiaomi_WZ_Tuer)  {channel="mihome:sensor_magnet_aq2:158d0002722d11:lastOpened"}
+Number     WohnzimmerDoorWindowSensor_IsOpenAlarmTimer   "Alarm Timer"                    (gXiaomi_WZ_Tuer)  {channel="mihome:sensor_magnet_aq2:158d0002722d11:isOpenAlarmTimer"}
+Number     WohnzimmerDoorWindowSensor_BatteryLevel       "Batterieladung"                 (gXiaomi_WZ_Tuer)  {channel="mihome:sensor_magnet_aq2:158d0002722d11:batteryLevel"}
+Switch     WohnzimmerDoorWindowSensor_LowBattery         "Niedriger Batteriestatus"       (gXiaomi_WZ_Tuer)  {channel="mihome:sensor_magnet_aq2:158d0002722d11:lowBattery"}
+
+Group gXiaomi_Kueche_Fenster_Links "Fenster Küche links"	(gEG_Kueche)
+Contact    KCheLinksDoorWindowSensor_IsOpen             "Open Status [%s]"                    (gXiaomi_Kueche_Fenster_Links)  {channel="mihome:sensor_magnet_aq2:158d0002750f0b:isOpen"}
+DateTime   KCheLinksDoorWindowSensor_LastOpened         "Last Time Opened (Date/Time)"   (gXiaomi_Kueche_Fenster_Links)  {channel="mihome:sensor_magnet_aq2:158d0002750f0b:lastOpened"}
+Number     KCheLinksDoorWindowSensor_IsOpenAlarmTimer   "Alarm Timer"                    (gXiaomi_Kueche_Fenster_Links)  {channel="mihome:sensor_magnet_aq2:158d0002750f0b:isOpenAlarmTimer"}
+Number     KCheLinksDoorWindowSensor_BatteryLevel       "Batterieladung"                 (gXiaomi_Kueche_Fenster_Links)  {channel="mihome:sensor_magnet_aq2:158d0002750f0b:batteryLevel"}
+Switch     KCheLinksDoorWindowSensor_LowBattery         "Niedriger Batteriestatus"       (gXiaomi_Kueche_Fenster_Links)  {channel="mihome:sensor_magnet_aq2:158d0002750f0b:lowBattery"}
+
+Group gXiaomi_Kueche_Fenster_Rechts "Fenster Küche rechts"	(gEG_Kueche)
+Contact    KCheRechtsDoorWindowSensor_IsOpen             "Open Status [%s]"                    (gXiaomi_Kueche_Fenster_Rechts)  {channel="mihome:sensor_magnet_aq2:158d0002722c1f:isOpen"}
+DateTime   KCheRechtsDoorWindowSensor_LastOpened         "Last Time Opened (Date/Time)"   (gXiaomi_Kueche_Fenster_Rechts)  {channel="mihome:sensor_magnet_aq2:158d0002722c1f:lastOpened"}
+Number     KCheRechtsDoorWindowSensor_IsOpenAlarmTimer   "Alarm Timer"                    (gXiaomi_Kueche_Fenster_Rechts)  {channel="mihome:sensor_magnet_aq2:158d0002722c1f:isOpenAlarmTimer"}
+Number     KCheRechtsDoorWindowSensor_BatteryLevel       "Batterieladung"                 (gXiaomi_Kueche_Fenster_Rechts)  {channel="mihome:sensor_magnet_aq2:158d0002722c1f:batteryLevel"}
+Switch     KCheRechtsDoorWindowSensor_LowBattery         "Niedriger Batteriestatus"       (gXiaomi_Kueche_Fenster_Rechts)  {channel="mihome:sensor_magnet_aq2:158d0002722c1f:lowBattery"}

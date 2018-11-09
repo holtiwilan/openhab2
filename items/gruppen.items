@@ -31,6 +31,7 @@ Group gEG_Kueche 	"Küche" 		<kitchen> 	(gEG)
     Switch DashButton1  "Dash 1"    <switch>    (gEG_Kueche)        ["Lighting"]
     Switch Sonoff2		"Küche"     <light>		(gEG_Kueche)	    ["Lighting"] {mqtt=">[mosquitto:/Sonoff2/gpio/12:command:ON:1],>[mosquitto:/Sonoff2/gpio/12:command:OFF:0],<[mosquitto:/Sonoff2/gpio/12:state:MAP(onoff.map)]", autoupdate="false"}
 Group gEG_Flur 		"Flur" 			<corridor> 	(gEG)
+    Switch Nachricht				"Nachricht"	(gEG_Flur)	["Switchable"]
     Switch LichterDimmen	"Licht im Flur dimmen"	    (gEG_Flur)	["Lighting"]
     Switch LichterFlur	"Licht im Flur"	(gEG_Flur)	["Lighting"]
     Number:Temperature   FRITZDECTRep1002_Temperature (gEG_Flur)   ["Temperatur"]   {channel="avmfritz:FRITZ_DECT_Repeater_100:192_168_178_1:087610928985:temperature"}    Switch RegenReicht				"Regen reicht"				(gGarten)	["Switchable"]

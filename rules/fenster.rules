@@ -1,0 +1,39 @@
+rule "Es regnet"
+    when
+    	Item Weather_Today_Icon changed
+    then
+		// prüfen, ob es regnet
+        var rain = Weather_Today_Icon.state == "flurries" ||    				
+					Weather_Today_Icon.state == "rain" || 
+        			Weather_Today_Icon.state == "sleet" ||
+        			Weather_Today_Icon.state == "snow" ||
+        			Weather_Today_Icon.state == "tstorms"
+	
+		if (rain) {
+    	    logInfo("Fenster","Es regnet, Fenster prüfen")
+    	
+			//Wohnzimmerfenster checken
+			if (mihome_sensor_magnet_aq2_158d0002722d11_isOpen.state == OPEN) {
+				sendPushbulletNote("tim.holzhausen@gmail.com", "Regen", "Es regnet und die Terassentür im Wohnzimmer ist offen")	
+			}
+			//Küchenfenster links checken
+			if (mihome_sensor_magnet_aq2_158d0002750f0b_isOpen.state == OPEN) {
+				sendPushbulletNote("tim.holzhausen@gmail.com", "Regen", "Es regnet und das linke Fenster in der Küche ist offen")	
+			}
+			//Küchenfenster rechts checken
+			if (mihome_sensor_magnet_aq2_158d0002722c1f_isOpen.state == OPEN) {
+				sendPushbulletNote("tim.holzhausen@gmail.com", "Regen", "Es regnet und das rechte Fenster in der Küche ist offen")	
+			}
+		}
+	end
+
+rule "Nachricht"
+    when
+    	Item Nachricht changed
+    then
+        sendCommand(mihome_gateway_7c49ebb1dc1b_volume, 30)
+        sendCommand(mihome_gateway_7c49ebb1dc1b_sound, 10002)
+        Thread::sleep(5000) /* wait for 5 seconds */
+        sendCommand(mihome_gateway_7c49ebb1dc1b_sound, 10000)
+        sendCommand(mihome_gateway_7c49ebb1dc1b_volume, 0)
+    end
