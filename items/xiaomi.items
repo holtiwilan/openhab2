@@ -10,7 +10,7 @@ Dimmer   XiaomiMiSmartHomeGateway_Volume             "Sound Volume"             
 
 Group gXiaomi_WZ_Tuer "Wohnzimmer"	(gEG_Wohnzimmer)
 Contact    WohnzimmerDoorWindowSensor_IsOpen             "Open Status [%s]"                    (gXiaomi_WZ_Tuer)  {channel="mihome:sensor_magnet_aq2:158d0002722d11:isOpen"}
-DateTime   WohnzimmerDoorWindowSensor_LastOpened         "Last Time Opened (Date/Time)"   (gXiaomi_WZ_Tuer)  {channel="mihome:sensor_magnet_aq2:158d0002722d11:lastOpened"}
+DateTime   WohnzimmerDoorWindowSensor_LastOpened         "Last Time Opened (Date/Time) [%s]"   (gXiaomi_WZ_Tuer)  {channel="mihome:sensor_magnet_aq2:158d0002722d11:lastOpened"}
 Number     WohnzimmerDoorWindowSensor_IsOpenAlarmTimer   "Alarm Timer"                    (gXiaomi_WZ_Tuer)  {channel="mihome:sensor_magnet_aq2:158d0002722d11:isOpenAlarmTimer"}
 Number     WohnzimmerDoorWindowSensor_BatteryLevel       "Batterieladung"                 (gXiaomi_WZ_Tuer)  {channel="mihome:sensor_magnet_aq2:158d0002722d11:batteryLevel"}
 Switch     WohnzimmerDoorWindowSensor_LowBattery         "Niedriger Batteriestatus"       (gXiaomi_WZ_Tuer)  {channel="mihome:sensor_magnet_aq2:158d0002722d11:lowBattery"}
@@ -30,42 +30,42 @@ Number     KCheRechtsDoorWindowSensor_BatteryLevel       "Batterieladung"       
 Switch     KCheRechtsDoorWindowSensor_LowBattery         "Niedriger Batteriestatus"       (gXiaomi_Kueche_Fenster_Rechts)  {channel="mihome:sensor_magnet_aq2:158d0002722c1f:lowBattery"}
 
 Group gXiaomi_Bad_Fenster "Fenster Badezimmer"	(gOG_Bad)
-Contact    BadezimmerDoorWindowSensor_IsOpen             "Open Status"                    (gXiaomi_Bad_Fenster) {channel="mihome:sensor_magnet_aq2:158d000272f055:isOpen"}
+Contact    BadezimmerDoorWindowSensor_IsOpen             "Open Status [%s]"                    (gXiaomi_Bad_Fenster) {channel="mihome:sensor_magnet_aq2:158d000272f055:isOpen"}
 DateTime   BadezimmerDoorWindowSensor_LastOpened         "Last Time Opened (Date/Time)"   (gXiaomi_Bad_Fenster) {channel="mihome:sensor_magnet_aq2:158d000272f055:lastOpened"}
 Number     BadezimmerDoorWindowSensor_IsOpenAlarmTimer   "Alarm Timer"                    (gXiaomi_Bad_Fenster) {channel="mihome:sensor_magnet_aq2:158d000272f055:isOpenAlarmTimer"}
 Number     BadezimmerDoorWindowSensor_BatteryLevel       "Batterieladung"                 (gXiaomi_Bad_Fenster) {channel="mihome:sensor_magnet_aq2:158d000272f055:batteryLevel"}
 Switch     BadezimmerDoorWindowSensor_LowBattery         "Niedriger Batteriestatus"       (gXiaomi_Bad_Fenster) {channel="mihome:sensor_magnet_aq2:158d000272f055:lowBattery"}
 
 Group gXiaomi_Schlafzimmer_Fenster_Links "Fenster Schlafen links"	(gOG_Schlafen)
-Contact    SchlafzimmerDoorWindowSensor1_IsOpen             "Open Status"                    (gXiaomi_Schlafzimmer_Fenster_Links)   {channel="mihome:sensor_magnet_aq2:158d000272ef20:isOpen"}
+Contact    SchlafzimmerDoorWindowSensor1_IsOpen             "Open Status [%s]"                    (gXiaomi_Schlafzimmer_Fenster_Links)   {channel="mihome:sensor_magnet_aq2:158d000272ef20:isOpen"}
 DateTime   SchlafzimmerDoorWindowSensor1_LastOpened         "Last Time Opened (Date/Time)"   (gXiaomi_Schlafzimmer_Fenster_Links)   {channel="mihome:sensor_magnet_aq2:158d000272ef20:lastOpened"}
 Number     SchlafzimmerDoorWindowSensor1_IsOpenAlarmTimer   "Alarm Timer"                    (gXiaomi_Schlafzimmer_Fenster_Links)   {channel="mihome:sensor_magnet_aq2:158d000272ef20:isOpenAlarmTimer"}
 Number     SchlafzimmerDoorWindowSensor1_BatteryLevel       "Batterieladung"                 (gXiaomi_Schlafzimmer_Fenster_Links)   {channel="mihome:sensor_magnet_aq2:158d000272ef20:batteryLevel"}
 Switch     SchlafzimmerDoorWindowSensor1_LowBattery         "Niedriger Batteriestatus"       (gXiaomi_Schlafzimmer_Fenster_Links)   {channel="mihome:sensor_magnet_aq2:158d000272ef20:lowBattery"}
 
 Group gXiaomi_Schlafzimmer_Fenster_Rechts "Fenster Schlafen rechts"	(gOG_Schlafen)
-Contact    Schlafzimmer2DoorWindowSensor_IsOpen             "Open Status"                    (gXiaomi_Schlafzimmer_Fenster_Rechts)  {channel="mihome:sensor_magnet_aq2:158d000272ecaf:isOpen"}
+Contact    Schlafzimmer2DoorWindowSensor_IsOpen             "Open Status [%s]"                    (gXiaomi_Schlafzimmer_Fenster_Rechts)  {channel="mihome:sensor_magnet_aq2:158d000272ecaf:isOpen"}
 DateTime   Schlafzimmer2DoorWindowSensor_LastOpened         "Last Time Opened (Date/Time)"   (gXiaomi_Schlafzimmer_Fenster_Rechts)  {channel="mihome:sensor_magnet_aq2:158d000272ecaf:lastOpened"}
 Number     Schlafzimmer2DoorWindowSensor_IsOpenAlarmTimer   "Alarm Timer"                    (gXiaomi_Schlafzimmer_Fenster_Rechts)  {channel="mihome:sensor_magnet_aq2:158d000272ecaf:isOpenAlarmTimer"}
 Number     Schlafzimmer2DoorWindowSensor_BatteryLevel       "Batterieladung"                 (gXiaomi_Schlafzimmer_Fenster_Rechts)  {channel="mihome:sensor_magnet_aq2:158d000272ecaf:batteryLevel"}
 Switch     Schlafzimmer2DoorWindowSensor_LowBattery         "Niedriger Batteriestatus"       (gXiaomi_Schlafzimmer_Fenster_Rechts)  {channel="mihome:sensor_magnet_aq2:158d000272ecaf:lowBattery"}
 
 Group gXiaomi_Kinderimmer_Fenster "Fenster Kinderzimmer"	(gOG_Kinder)
-Contact    KinderzimmerDoorWindowSensor_IsOpen             "Open Status"                    (gXiaomi_Kinderimmer_Fenster)   {channel="mihome:sensor_magnet_aq2:158d0002726015:isOpen"}
+Contact    KinderzimmerDoorWindowSensor_IsOpen             "Open Status [%s]"                    (gXiaomi_Kinderimmer_Fenster)   {channel="mihome:sensor_magnet_aq2:158d0002726015:isOpen"}
 DateTime   KinderzimmerDoorWindowSensor_LastOpened         "Last Time Opened (Date/Time)"   (gXiaomi_Kinderimmer_Fenster)   {channel="mihome:sensor_magnet_aq2:158d0002726015:lastOpened"}
 Number     KinderzimmerDoorWindowSensor_IsOpenAlarmTimer   "Alarm Timer"                    (gXiaomi_Kinderimmer_Fenster)   {channel="mihome:sensor_magnet_aq2:158d0002726015:isOpenAlarmTimer"}
 Number     KinderzimmerDoorWindowSensor_BatteryLevel       "Batterieladung"                 (gXiaomi_Kinderimmer_Fenster)   {channel="mihome:sensor_magnet_aq2:158d0002726015:batteryLevel"}
 Switch     KinderzimmerDoorWindowSensor_LowBattery         "Niedriger Batteriestatus"       (gXiaomi_Kinderimmer_Fenster)   {channel="mihome:sensor_magnet_aq2:158d0002726015:lowBattery"}
 
 Group gXiaomi_Ankleide_Fenster "Fenster Ankleide"	(gOG_Ankleide)
-Contact    AnkleideDoorWindowSensor_IsOpen             "Open Status"                    (gXiaomi_Ankleide_Fenster)  {channel="mihome:sensor_magnet_aq2:158d000274ff63:isOpen"}
+Contact    AnkleideDoorWindowSensor_IsOpen             "Open Status [%s]"                    (gXiaomi_Ankleide_Fenster)  {channel="mihome:sensor_magnet_aq2:158d000274ff63:isOpen"}
 DateTime   AnkleideDoorWindowSensor_LastOpened         "Last Time Opened (Date/Time)"   (gXiaomi_Ankleide_Fenster)  {channel="mihome:sensor_magnet_aq2:158d000274ff63:lastOpened"}
 Number     AnkleideDoorWindowSensor_IsOpenAlarmTimer   "Alarm Timer"                    (gXiaomi_Ankleide_Fenster)  {channel="mihome:sensor_magnet_aq2:158d000274ff63:isOpenAlarmTimer"}
 Number     AnkleideDoorWindowSensor_BatteryLevel       "Batterieladung"                 (gXiaomi_Ankleide_Fenster)  {channel="mihome:sensor_magnet_aq2:158d000274ff63:batteryLevel"}
 Switch     AnkleideDoorWindowSensor_LowBattery         "Niedriger Batteriestatus"       (gXiaomi_Ankleide_Fenster)  {channel="mihome:sensor_magnet_aq2:158d000274ff63:lowBattery"}
 
 Group gXiaomi_Dchzimmer_Fenster "Fenster Dachzimmer"	(gDG_Buero)
-Contact    DachzimmerDoorWindowSensor_IsOpen             "Open Status"                    (gXiaomi_Dchzimmer_Fenster)   {channel="mihome:sensor_magnet_aq2:158d0002750d62:isOpen"}
+Contact    DachzimmerDoorWindowSensor_IsOpen             "Open Status [%s]"                    (gXiaomi_Dchzimmer_Fenster)   {channel="mihome:sensor_magnet_aq2:158d0002750d62:isOpen"}
 DateTime   DachzimmerDoorWindowSensor_LastOpened         "Last Time Opened (Date/Time)"   (gXiaomi_Dchzimmer_Fenster)   {channel="mihome:sensor_magnet_aq2:158d0002750d62:lastOpened"}
 Number     DachzimmerDoorWindowSensor_IsOpenAlarmTimer   "Alarm Timer"                    (gXiaomi_Dchzimmer_Fenster)   {channel="mihome:sensor_magnet_aq2:158d0002750d62:isOpenAlarmTimer"}
 Number     DachzimmerDoorWindowSensor_BatteryLevel       "Batterieladung"                 (gXiaomi_Dchzimmer_Fenster)   {channel="mihome:sensor_magnet_aq2:158d0002750d62:batteryLevel"}
