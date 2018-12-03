@@ -24,6 +24,30 @@ rule "Es regnet"
 			if (mihome_sensor_magnet_aq2_158d0002722c1f_isOpen.state == OPEN) {
 				sendPushbulletNote("tim.holzhausen@gmail.com", "Regen", "Es regnet und das rechte Fenster in der Küche ist offen")	
 			}
+			//Ankleide checken
+			if (mihome_sensor_magnet_aq2_158d000274ff63_isOpen.state == OPEN) {
+				sendTelegram("bot2", "Es regnet und das Fenster in der Ankleide ist offen")
+			}
+			//Badezimmer checken
+			if (mihome_sensor_magnet_aq2_158d000272f055_isOpen.state == OPEN) {
+				sendTelegram("bot2", "Es regnet und das Fenster im Badezimmer ist offen")
+			}
+			//Dachzimmer checken
+			if (mihome_sensor_magnet_aq2_158d0002750d62_isOpen.state == OPEN) {
+				sendTelegram("bot2", "Es regnet und das Fenster im Dachzimmer ist offen")
+			}
+			//Kinderzimmer checken
+			if (mihome_sensor_magnet_aq2_158d0002726015_isOpen.state == OPEN) {
+				sendTelegram("bot2", "Es regnet und das Fenster im Kinderzimmer ist offen")
+			}
+			//Schlafzimmer links checken
+			if (mihome_sensor_magnet_aq2_158d000272ef20_isOpen.state == OPEN) {
+				sendTelegram("bot2", "Es regnet und das linke Fenster im Schlafzimmer ist offen")
+			}
+			//Küchenfenster rechts checken
+			if (mihome_sensor_magnet_aq2_158d000272ecaf_isOpen.state == OPEN) {
+				sendTelegram("bot2", "Es regnet und das rechte Fenster im Schlafzimmer ist offen")
+			}
 		}
 	end
 
