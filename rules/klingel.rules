@@ -1,11 +1,17 @@
+var lastRing = now
+
 rule "Klingel"
 	when
 		Item Klingel changed to ON
 	then
-		sendCommand(mihome_gateway_7c49ebb1dc1b_volume, 5)
-        sendCommand(mihome_gateway_7c49ebb1dc1b_sound, 10)
-		sendTelegramPhoto("bot2", "http://192.168.178.31/snapshot.cgi?user=openhab&pwd=openhab", "Es klingelt")		
-		Thread::sleep(5000) /* wait for 5 seconds */
-        sendCommand(mihome_gateway_7c49ebb1dc1b_sound, 10000)
-        sendCommand(mihome_gateway_7c49ebb1dc1b_volume, 0)
+		if(lastRing.isBefore(now.minusSeconds(30))) 
+        {
+			lastRing = now
+			sendCommand(mihome_gateway_7c49ebb1dc1b_volume, 20)
+			sendCommand(mihome_gateway_7c49ebb1dc1b_sound, 10)
+			sendTelegramPhoto("bot2", "http://192.168.178.31/snapshot.cgi?user=openhab&pwd=openhab", "Es klingelt")		
+			Thread::sleep(5000) /* wait for 5 seconds */
+			sendCommand(mihome_gateway_7c49ebb1dc1b_sound, 10000)
+			sendCommand(mihome_gateway_7c49ebb1dc1b_volume, 0)
+		}
     end
