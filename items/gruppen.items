@@ -19,7 +19,6 @@ Group gUG_Mancave	"Mancave"		<niveau>	(gUG)
 
 
 /* Erdgeschoss */
-Switch	Klingel		"Klingel"	<switch>		(gEG)	["Lighting"] { mqtt=">[mosquitto:cmnd/sonoff-klingel/POWER:command:*:default],<[mosquitto:stat/sonoff-klingel/POWER:state:default]" }
 Group gEG_Wohnzimmer "Wohnzimmer" 	<sofa> 	(gEG)
     Switch	Sonoff1		"Vitrine"	<light>		(gEG_Wohnzimmer)	["Lighting"] {mqtt=">[mosquitto:/Sonoff1/gpio/12:command:ON:1],>[mosquitto:/Sonoff1/gpio/12:command:OFF:0],<[mosquitto:/Sonoff1/gpio/12:state:MAP(onoff.map)]", autoupdate="false"}
     Group		gEG_Wohnzimmer_HiFi		<living>		(gEG_Wohnzimmer)
@@ -36,7 +35,7 @@ Group gEG_Flur 		"Flur" 			<corridor> 	(gEG)
     Switch LichterFlur	"Licht im Flur"	(gEG_Flur)	["Lighting"]
     Number:Temperature   FRITZDECTRep1002_Temperature (gEG_Flur)   ["Temperatur"]   {channel="avmfritz:FRITZ_DECT_Repeater_100:192_168_178_1:087610928985:temperature"}    Switch RegenReicht				"Regen reicht"				(gGarten)	["Switchable"]
 Group gEG_Windfang 		"Windfang" 			<corridor>	(gEG)
-    
+
 /* Obergeschoss */
 Group gOG_Bad 		"Bad" 			<bath> 	(gOG)
 Group gOG_Schlafen 	"Schlafzimmer" 	<bedroom> 	(gOG)

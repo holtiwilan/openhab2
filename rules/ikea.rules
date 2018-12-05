@@ -13,7 +13,7 @@ end
 
 rule "Licht im Flur nicht Dimmen"
 when
-Item NightState changed to OFF
+    Item NightState changed to OFF
 then
     logInfo("IKEA","Licht nicht mehr dimmen")
     sendCommand(TRADFRIBulbGU10W400lm_Brightness, "100")
