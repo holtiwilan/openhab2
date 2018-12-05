@@ -21,6 +21,7 @@ Group gUG_Mancave	"Mancave"		<niveau>	(gUG)
 /* Erdgeschoss */
 Group gEG_Wohnzimmer "Wohnzimmer" 	<sofa> 	(gEG)
     Switch	Sonoff1		"Vitrine"	<light>		(gEG_Wohnzimmer)	["Lighting"] {mqtt=">[mosquitto:/Sonoff1/gpio/12:command:ON:1],>[mosquitto:/Sonoff1/gpio/12:command:OFF:0],<[mosquitto:/Sonoff1/gpio/12:state:MAP(onoff.map)]", autoupdate="false"}
+    
     Group		gEG_Wohnzimmer_HiFi		<living>		(gEG_Wohnzimmer)
         Switch DenonPower           "Power"                 (gEG_Wohnzimmer_HiFi)                 {denon="avrx1000#PW"}
         Dimmer DenonVolume          "Volume [%.1f]"         (gEG_Wohnzimmer_HiFi)                 {denon="avrx1000#MV"}

@@ -38,6 +38,7 @@ sitemap myhome label="Zuhause"{
 			Slider item=gIKEA_EG_Flur_Dimmer label="Dimmer Flur [%.1f]" icon="light"
 			Switch item=Klingel
 			Switch item=KlingelStumm
+			Switch item=Tasmota3
 			Group item=gEG_Wohnzimmer
 			Group item=gEG_Kueche    
 			Group item=gEG_Windfang
