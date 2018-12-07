@@ -1,11 +1,10 @@
-rule "Weihnachtsbeleuchtung Kette an" //schaltet 10min. nach Sonnenuntergang
+rule "Weihnachtsbeleuchtung Kette an"
  
 when
-  Item Sunset_Event received update ON
+  Item NightState received update ON
 then
-  sendCommand(dose1, ON)
-  logInfo("Regel Weihnachtsbeleuchtung", "Kette an")
-  pushover("Lichterkette an!")
+  sendCommand(TASMOTA3, ON)
+  logInfo("Weihnachtsbeleuchtung", "Weihnachtsbeleuchtung an")
 end
  
  
@@ -15,7 +14,6 @@ when
   //jeden Abend um 22.30 Uhr
   Time cron "0 30 22 * * ?"
 then
-  sendCommand(dose1, OFF)
-  logInfo("Regel Weihnachtsbeleuchtung", "Kette aus")
-  pushover("Lichterkette aus!")
+  sendCommand(TASMOTA3, OFF)
+  logInfo("Weihnachtsbeleuchtung", "Weihnachtsbeleuchtung aus")
 end
