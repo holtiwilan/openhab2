@@ -9,6 +9,25 @@ then
 	lastRing = now
 end
 
+rule "Klingel stumm"
+when
+  //jeden Abend um 20.00 Uhr
+  Time cron "0 00 20 * * ?"
+then
+  sendCommand(KlingelStumm, ON)
+  logInfo("Klingel", "Klingel stumm geschaltet")
+end
+
+rule "Klingel nicht stumm"
+when
+  //jeden Morgen um 07.00 Uhr
+  Time cron "0 00 07 * * ?"
+then
+  sendCommand(KlingelStumm, OFF)
+  logInfo("Klingel", "Klingel nicht mehr stumm geschaltet")
+end
+
+
 rule "Klingel"
 	when
 		Item Klingel changed to ON
@@ -36,14 +55,6 @@ rule "FlurBlinken"
 	then
 		sendCommand(LichterFlur, ON)
 		sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, ON)
-		Thread::sleep(2000) /* wait for 1 seconds */
-		sendCommand(LichterFlur, OFF)
-		sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, OFF)
-		
-		Thread::sleep(2000) /* wait for 1 seconds */
-		sendCommand(LichterFlur, ON)
-		sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, ON)
-		
 		Thread::sleep(2000) /* wait for 1 seconds */
 		sendCommand(LichterFlur, OFF)
 		sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, OFF)
