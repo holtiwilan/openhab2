@@ -14,15 +14,15 @@ rule "Es regnet"
     	
 			//Wohnzimmerfenster checken
 			if (mihome_sensor_magnet_aq2_158d0002722d11_isOpen.state == OPEN) {
-				sendPushbulletNote("tim.holzhausen@gmail.com", "Regen", "Es regnet und die Terassentür im Wohnzimmer ist offen")	
+				sendTelegram("bot2", "Es regnet und die Terassentür im Wohnzimmer ist offen")
 			}
 			//Küchenfenster links checken
 			if (mihome_sensor_magnet_aq2_158d0002750f0b_isOpen.state == OPEN) {
-				sendPushbulletNote("tim.holzhausen@gmail.com", "Regen", "Es regnet und das linke Fenster in der Küche ist offen")	
+				sendTelegram("bot2", "Es regnet und ein Fenster in der Küche ist offen")
 			}
 			//Küchenfenster rechts checken
 			if (mihome_sensor_magnet_aq2_158d0002722c1f_isOpen.state == OPEN) {
-				sendPushbulletNote("tim.holzhausen@gmail.com", "Regen", "Es regnet und das rechte Fenster in der Küche ist offen")	
+				sendTelegram("bot2", "Es regnet und ein Fenster in der Küche ist offen")
 			}
 			//Ankleide checken
 			if (mihome_sensor_magnet_aq2_158d000274ff63_isOpen.state == OPEN) {
@@ -42,11 +42,11 @@ rule "Es regnet"
 			}
 			//Schlafzimmer links checken
 			if (mihome_sensor_magnet_aq2_158d000272ef20_isOpen.state == OPEN) {
-				sendTelegram("bot2", "Es regnet und das linke Fenster im Schlafzimmer ist offen")
+				sendTelegram("bot2", "Es regnet und ein Fenster im Schlafzimmer ist offen")
 			}
 			//Küchenfenster rechts checken
 			if (mihome_sensor_magnet_aq2_158d000272ecaf_isOpen.state == OPEN) {
-				sendTelegram("bot2", "Es regnet und das rechte Fenster im Schlafzimmer ist offen")
+				sendTelegram("bot2", "Es regnet und ein Fenster im Schlafzimmer ist offen")
 			}
 		}
 	end
