@@ -36,10 +36,11 @@ rule "Klingel"
 				lastRing = now
 				sendCommand(FlurBlinken, ON)
 				if (KlingelStumm.state == OFF) {
-					sendCommand(mihome_gateway_7c49ebb1dc1b_volume, 25)
+					sendCommand(mihome_gateway_7c49ebb1dc1b_volume, 50)
 					sendCommand(mihome_gateway_7c49ebb1dc1b_sound, 10)
 				}
 				sendTelegramPhoto("bot2", "http://192.168.178.31/snapshot.cgi?user=openhab&pwd=openhab", "Es klingelt")		
+				//sendTelegram("bot1", "Es Klingelt")
 				if (KlingelStumm.state == OFF) {
 					Thread::sleep(5000) /* wait for 5 seconds */
 					sendCommand(mihome_gateway_7c49ebb1dc1b_sound, 10000)

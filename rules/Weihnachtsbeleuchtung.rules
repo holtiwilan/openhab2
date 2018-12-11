@@ -2,7 +2,7 @@ rule "Weihnachtsbeleuchtung Kette an - Astro"
 when
   Item NightState received update ON
 then
-  sendCommand(TASMOTA3, ON)
+  sendCommand(Tasmota3, ON)
   logInfo("Weihnachtsbeleuchtung", "Weihnachtsbeleuchtung an")
 end
 
@@ -10,7 +10,7 @@ rule "Weihnachtsbeleuchtung Kette aus - Astro"
 when
   Item NightState received update OFF
 then
-  sendCommand(TASMOTA3, OFF)
+  sendCommand(Tasmota3, OFF)
   logInfo("Weihnachtsbeleuchtung", "Weihnachtsbeleuchtung aus")
 end
 
@@ -20,7 +20,7 @@ when
   //jeden Abend um 22.30 Uhr
   Time cron "0 30 22 * * ?"
 then
-  sendCommand(TASMOTA3, OFF)
+  sendCommand(Tasmota3, OFF)
   logInfo("Weihnachtsbeleuchtung", "Weihnachtsbeleuchtung aus")
 end
 
@@ -29,6 +29,6 @@ when
   //jeden Morgen um 06.30 Uhr
   Time cron "0 30 06 * * ?"
 then
-  sendCommand(TASMOTA3, ON)
+  sendCommand(Tasmota3, ON)
   logInfo("Weihnachtsbeleuchtung", "Weihnachtsbeleuchtung an")
 end
