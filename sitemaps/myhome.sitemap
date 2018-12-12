@@ -1,6 +1,7 @@
 sitemap myhome label="Zuhause"{
     Frame label="Allgemein" {
 		Text item=Weather_Today_Icon
+		Switch item=EsRegnet
 		 Group item=gAstro
 		Text label="Internetgeschwindigkeit" icon="network" {
 			Text item=INET_PING icon="network"
@@ -26,8 +27,10 @@ sitemap myhome label="Zuhause"{
 			Webview url="http://192.168.178.31/videostream.cgi?user=admin&pwd=123456&resolution=32&rate=14" height=14
     }*/
     Frame label="Haus" {
+		Group item=gFenster
 		Text label="Anwesenheiten" icon="presence" {
 				Group item=gAnwesend
+				Group item=gLocation
 		}    
 		Text label="Keller" icon="cellar" {
 			Group item=gUG_Mancave

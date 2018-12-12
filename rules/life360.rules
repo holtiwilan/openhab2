@@ -1,0 +1,69 @@
+rule "Check Life360 locations"
+when
+        Time cron "0 */2 * * * ? *" // every 2 minutes
+then
+        executeCommandLine('bash /etc/openhab2/scripts/life360.sh', 3*1000)
+end
+
+rule "Tim zuhause"
+when
+    Item LocationTim_i360 changed from NULL to Wohnort
+then
+    logInfo("Life360","Tim ist "+ LocationTim_i360.state)
+    sendTelegram("bot1", "Tim ist zuhause sagt Life360")
+    sendCommand(AnwesenheitTim, ON)
+end
+
+rule "Sandra zuhause"
+when
+    Item LocationSandra_i360 changed from NULL to Wohnort
+then
+    logInfo("Life360","Sandra ist "+ LocationSandra_i360.state)
+    sendTelegram("bot1", "Sandra ist zuhause sagt Life360")
+    sendCommand(AnwesenheitSandra, ON)
+end
+
+rule "Tilman zuhause"
+when
+    Item LocationTilman_i360 changed from NULL to Wohnort
+then
+    sendCommand(AnwesenheitTilman, ON)
+end
+
+rule "Sandra angekommen"
+when
+    Item LocationSandra_i360 changed
+then
+    if (LocationSandra_i360.state == NULL) {
+	    logInfo("Life360","Sandra ist unterwegs")
+        sendCommand(AnwesenheitSandra, OFF)
+    } else if (LocationSandra_i360.state == "Wohnort") {
+        logInfo("Life360","Sandra ist "+ LocationSandra_i360.state)
+        sendTelegram("bot1", "Sandra ist zuhause sagt Life360")
+	    sendCommand(AnwesenheitSandra, ON)
+	} else {
+        logInfo("Life360","Sandra ist hier angekommen: "+ LocationSandra_i360.state)
+        sendTelegram("bot1", "Sandra ist hier angekommen: "+ LocationSandra_i360.state)
+        sendCommand(AnwesenheitSandra, OFF)
+    }
+    
+end
+
+rule "Tilman angekommen"
+when
+    Item LocationTilman_i360 changed
+then
+    if (LocationTilman_i360.state == NULL) {
+	    logInfo("Life360","Tilman ist unterwegs")
+        sendCommand(AnwesenheitTilman, OFF)
+    } else if (LocationTilman_i360.state == "Wohnort") {
+        logInfo("Life360","Tilman ist "+ LocationTilman_i360.state)
+        sendTelegram("bot1", "Tilman ist zuhause sagt Life360")
+	    sendCommand(AnwesenheitTilman, ON)
+	} else {
+        logInfo("Life360","Tilman ist hier angekommen: "+ LocationTilman_i360.state)
+        sendTelegram("bot1", "Tilman ist hier angekommen: "+ LocationTilman_i360.state)
+        sendCommand(AnwesenheitTilman, OFF)
+    }
+    
+end

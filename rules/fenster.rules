@@ -40,7 +40,6 @@ rule "Es regnet"
 			if (mihome_sensor_magnet_aq2_158d000272ecaf_isOpen.state == OPEN) {
 				sendTelegram("bot2", "Es regnet und ein Fenster im Schlafzimmer ist offen")
 			}
-		}
 	end
 
 rule"FensterGeschlossen"

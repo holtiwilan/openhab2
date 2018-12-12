@@ -1,0 +1,7 @@
+Group gLocation		(All)
+String LocationTim_i360     "Tim @ [%s]"        (gLocation) {mqtt="<[mosquitto:owntracks/Tim:state:JSONPATH($.locname):.*]"}
+String BatterieTim         "Batterie [%s] %"    (gLocation) {mqtt="<[mosquitto:owntracks/Tim:state:JSONPATH($.batt):.*]"}
+String LocationSandra_i360  "Sandra @ [%s]"     (gLocation) {mqtt="<[mosquitto:owntracks/Sandra:state:JSONPATH($.locname):.*]"}
+String BatterieSandra         "Batterie [%s] %"    (gLocation) {mqtt="<[mosquitto:owntracks/Sandra:state:JSONPATH($.batt):.*]"}
+String LocationTilman_i360  "Tilman @ [%s]"     (gLocation) {mqtt="<[mosquitto:owntracks/Tilman:state:JSONPATH($.locname):.*]"}
+String BatterieTilman         "Batterie [%s] %"    (gLocation) {mqtt="<[mosquitto:owntracks/Tilman:state:JSONPATH($.batt):.*]"}
