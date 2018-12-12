@@ -1,0 +1,13 @@
+Group:Contact:OR(OPEN, CLOSED) gFenster "Fenster [(%d)]" <contact>
+	Contact    FensterWohnzimmer			"Open Status [%s]"                    (gFenster)	{channel="mihome:sensor_magnet_aq2:158d0002722d11:isOpen"}
+	Contact    FensterKuecheLinks			"Open Status [%s]"                    (gFenster)	{channel="mihome:sensor_magnet_aq2:158d0002750f0b:isOpen"}
+	Contact    FensterKuecheRechts			"Open Status [%s]"                    (gFenster)	{channel="mihome:sensor_magnet_aq2:158d0002722c1f:isOpen"}
+	Contact    FensterBadezimmer			"Open Status [%s]"                    (gFenster)	{channel="mihome:sensor_magnet_aq2:158d000272f055:isOpen"}
+	Contact    FensterSchlafzimmerRechts	"Open Status [%s]"                    (gFenster)	{channel="mihome:sensor_magnet_aq2:158d000272ef20:isOpen"}
+	Contact    FensterSchlafzimmerLinks		"Open Status [%s]"                    (gFenster)	{channel="mihome:sensor_magnet_aq2:158d000272ecaf:isOpen"}
+	Contact    FensterKinderzimmer			"Open Status [%s]"                    (gFenster)	{channel="mihome:sensor_magnet_aq2:158d0002726015:isOpen"}
+	Contact    FensterAnkleide				"Open Status [%s]"                    (gFenster)	{channel="mihome:sensor_magnet_aq2:158d000274ff63:isOpen"}
+	Contact    FensterDachzimmer			"Open Status [%s]"                    (gFenster)	{channel="mihome:sensor_magnet_aq2:158d0002750d62:isOpen"}
+
+	
+Number AnzahlOffeneFenster
