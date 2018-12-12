@@ -30,11 +30,30 @@ then
     sendCommand(AnwesenheitTilman, ON)
 end
 
+rule "Tim angekommen"
+when
+    Item LocationTim_i360 changed
+then
+    if (LocationTim_i360.state == "null") {
+	    logInfo("Life360","Tim ist unterwegs")
+        sendCommand(AnwesenheitTim, OFF)
+    } else if (LocationTim_i360.state == "Wohnort") {
+        logInfo("Life360","Tim ist "+ LocationTim_i360.state)
+        sendTelegram("bot1", "Tim ist zuhause sagt Life360")
+	    sendCommand(AnwesenheitTim, ON)
+	} else {
+        logInfo("Life360","Tim ist hier angekommen: "+ LocationTim_i360.state)
+        sendTelegram("bot1", "Tim ist hier angekommen: "+ LocationTim_i360.state)
+        sendCommand(AnwesenheitTim, OFF)
+    }
+    
+end
+
 rule "Sandra angekommen"
 when
     Item LocationSandra_i360 changed
 then
-    if (LocationSandra_i360.state == NULL) {
+    if (LocationSandra_i360.state == "null") {
 	    logInfo("Life360","Sandra ist unterwegs")
         sendCommand(AnwesenheitSandra, OFF)
     } else if (LocationSandra_i360.state == "Wohnort") {
@@ -53,7 +72,7 @@ rule "Tilman angekommen"
 when
     Item LocationTilman_i360 changed
 then
-    if (LocationTilman_i360.state == NULL) {
+    if (LocationTilman_i360.state == "null") {
 	    logInfo("Life360","Tilman ist unterwegs")
         sendCommand(AnwesenheitTilman, OFF)
     } else if (LocationTilman_i360.state == "Wohnort") {
