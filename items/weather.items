@@ -1,3 +1,5 @@
+Switch EsRegnet "Es Regnet"
+
 // atmosphere
 Number   Humidity    	  "Humidity [%d %%]"  	  {weather="locationId=home, type=atmosphere, property=humidity"}
 Number   Visibility    	  "Visibility [%.2f km]"  {weather="locationId=home, type=atmosphere, property=visibility"}
