@@ -1,0 +1,21 @@
+rule "Regen"
+    when
+    	Item Weather_Today_Icon changed
+    then
+		// prüfen, ob es regnet
+        var rain = Weather_Today_Icon.state == "flurries" ||    				
+        Weather_Today_Icon.state == "rain" || 
+        Weather_Today_Icon.state == "sleet" ||
+        Weather_Today_Icon.state == "snow" ||
+        Weather_Today_Icon.state == "tstorms"
+	
+		if (rain) {
+    	    logInfo("Wetter","Es regnet")
+          sendCommand(EsRegnet, ON)
+		}
+    else
+     {
+    	    logInfo("Wetter","Es regnet nicht")
+          sendCommand(EsRegnet, OFF)
+		}
+	end
