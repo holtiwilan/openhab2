@@ -5,31 +5,6 @@ then
         executeCommandLine('bash /etc/openhab2/scripts/life360.sh', 3*1000)
 end
 
-rule "Tim zuhause"
-when
-    Item LocationTim_i360 changed from NULL to Wohnort
-then
-    logInfo("Life360","Tim ist "+ LocationTim_i360.state)
-    sendTelegram("bot1", "Tim ist zuhause sagt Life360")
-    sendCommand(AnwesenheitTim, ON)
-end
-
-rule "Sandra zuhause"
-when
-    Item LocationSandra_i360 changed from NULL to Wohnort
-then
-    logInfo("Life360","Sandra ist "+ LocationSandra_i360.state)
-    sendTelegram("bot1", "Sandra ist zuhause sagt Life360")
-    sendCommand(AnwesenheitSandra, ON)
-end
-
-rule "Tilman zuhause"
-when
-    Item LocationTilman_i360 changed from NULL to Wohnort
-then
-    sendCommand(AnwesenheitTilman, ON)
-end
-
 rule "Tim angekommen"
 when
     Item LocationTim_i360 changed

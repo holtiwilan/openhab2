@@ -60,8 +60,13 @@ do
     battery=$(echo $members | jq .members[$count].location.battery)
     avatar=$(echo $members | jq .members[$count].avatar)
     locationname=$(echo $members | jq .members[$count].location.name)
-    #if [ "$locationname" = "\"Home"\" ]; then
-    #locationname="ON"
+    if [ "$locationname" = "\"null"\" ]; then
+        locationname="unterwegs"
+    fi
+    if [ "$locationname" = null ]; then
+        locationname="unterwegs"
+    fi
+
     #else
     #locationname="OFF"
     #fi
