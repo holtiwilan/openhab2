@@ -1,4 +1,4 @@
-Group gXiaomi_EG_Flur "Flur"  (gEG_Flur)
+Group gXiaomi_EG_Flur "Mi Gateway Flur"  (gEG_Flur)
 Switch   XiaomiMiSmartHomeGateway_JoinPermission     "Enable Device Inclusion"                 (gXiaomi_EG_Flur)    {channel="mihome:gateway:7c49ebb1dc1b:joinPermission"}
 Dimmer   XiaomiMiSmartHomeGateway_Brightness         "Brightness"                              (gXiaomi_EG_Flur)    {channel="mihome:gateway:7c49ebb1dc1b:brightness"}
 Number   XiaomiMiSmartHomeGateway_Illumination       "Illumination"                            (gXiaomi_EG_Flur)    {channel="mihome:gateway:7c49ebb1dc1b:illumination"}
