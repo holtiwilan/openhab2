@@ -1,0 +1,10 @@
+rule "NachrichtEsRegnetFensterOffen"
+    when
+    	Item NachrichtEsRegnetFensterOffen changed
+    then
+        sendCommand(mihome_gateway_7c49ebb1dc1b_volume, 30)
+        sendCommand(mihome_gateway_7c49ebb1dc1b_sound, 10002)
+        Thread::sleep(5000) /* wait for 5 seconds */
+        sendCommand(mihome_gateway_7c49ebb1dc1b_sound, 10000)
+        sendCommand(mihome_gateway_7c49ebb1dc1b_volume, 0)
+    end
