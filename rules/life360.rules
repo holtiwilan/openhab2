@@ -1,9 +1,9 @@
-rule "Check Life360 locations"
-when
-        Time cron "0 */2 * * * ? *" // every 2 minutes
-then
-        executeCommandLine('bash /etc/openhab2/scripts/life360.sh', 3*1000)
-end
+//rule "Check Life360 locations"
+//when
+//        Time cron "0 */2 * * * ? *" // every 2 minutes
+//then
+//        executeCommandLine('bash /etc/openhab2/scripts/life360.sh', 3*1000)
+//end
 
 rule "Tim angekommen"
 when

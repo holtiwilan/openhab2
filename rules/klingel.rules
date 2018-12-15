@@ -27,6 +27,15 @@ then
   logInfo("Klingel", "Klingel nicht mehr stumm geschaltet")
 end
 
+rule "Klingel nicht stumm"
+when
+  //jeden Morgen um 07.10 Uhr
+  Time cron "0 10 07 * * ?"
+then
+  sendCommand(KlingelStumm, OFF)
+  logInfo("Klingel", "Klingel nicht mehr stumm geschaltet")
+end
+
 
 rule "Klingel"
 	when

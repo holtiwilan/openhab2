@@ -9,6 +9,9 @@ mqtt_port="1883"
 mqtt_user=""
 mqtt_pass=""
 
+# set a PATH variable
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
 function bearer {
 echo "$(date +%s) INFO: requesting access token"
 bearer_id=$(curl -s -X POST -H "Authorization: Basic cFJFcXVnYWJSZXRyZTRFc3RldGhlcnVmcmVQdW1hbUV4dWNyRUh1YzptM2ZydXBSZXRSZXN3ZXJFQ2hBUHJFOTZxYWtFZHI0Vg==" -F "grant_type=password" -F "username=$username360" -F "password=$password360" https://api.life360.com/v3/oauth2/token.json | grep -Po '(?<="access_token":")\w*')
@@ -49,6 +52,8 @@ fi
 
 members_count=$(echo $members | jq '.members | (length)')
 count=0
+#echo "starting loop for $members_count members"
+#echo "$(date +%s) INFO: starting loop for $members_count members"
 while [ $count -lt $members_count ]
 do
     id=$(echo $members | jq .members[$count].id)
@@ -60,13 +65,20 @@ do
     battery=$(echo $members | jq .members[$count].location.battery)
     avatar=$(echo $members | jq .members[$count].avatar)
     locationname=$(echo $members | jq .members[$count].location.name)
+    #echo $firstName
+    #echo $locationname
+    #echo $avatar
+    downname=${firstName//"\""/""}
+
+    wget -q -O /etc/openhab2/icons/classic/${downname,,}.png ${avatar//"\""/""}
     if [ "$locationname" = "\"null"\" ]; then
-        locationname="unterwegs"
+        locationname="\"unterwegs"\"
     fi
     if [ "$locationname" = null ]; then
-        locationname="unterwegs"
+        locationname="\"unterwegs"\"
     fi
-
+    #echo $locationname
+    
     #else
     #locationname="OFF"
     #fi
