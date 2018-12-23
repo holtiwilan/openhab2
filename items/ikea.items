@@ -33,7 +33,7 @@ Group:Dimmer gIKEA_DG_Buero_Farbe_Dimmer		"Büro Bunt"			<light>	(gDG_Buero) ["L
     Dimmer   TRADFRIDGE27CWSOpal6002_ColorTemperature   "Farbtemperatur"    (gIKEA_DG_Buero_Farbe_Dimmer)   {channel="tradfri:0210:gwb8d7af2ba875:65553:color_temperature"}
 
 
-Group:Color gIKEA_DG_Buero_Farbe_Color		"Büro_Farbwähler"			<light>	(gDG_Buero) ["Lighting"]
+Group:Color     		"Büro_Farbwähler"			<light>	(gDG_Buero) ["Lighting"]
     Color    TRADFRIDGE27CWSOpal600_Color              "Farbe"          (gIKEA_DG_Buero_Farbe_Color)   {channel="tradfri:0210:gwb8d7af2ba875:65552:color"}
     Color    TRADFRIDGE27CWSOpal6002_Color              "Farbe" (gIKEA_DG_Buero_Farbe_Color)            {channel="tradfri:0210:gwb8d7af2ba875:65553:color"}
     

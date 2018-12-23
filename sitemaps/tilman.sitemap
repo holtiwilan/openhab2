@@ -1,5 +1,7 @@
 sitemap myhome label="Tilman"{
     
+Default item=gIKEA_DG_Buero_Farbe_Color label="Büro_Farbwähler" icon="light"
+
 Text item=gIKEA_DG_Buero_Farbe_Color label="Büro_Farbwähler" icon="light" {
 	Default item=TRADFRIDGE27CWSOpal600_Color label="Farbe"
 	Default item=TRADFRIDGE27CWSOpal6002_Color label="Farbe"
