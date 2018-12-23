@@ -1,0 +1,14 @@
+sitemap magicmirror label="Status"{
+	Frame label="Fenster"{
+		Text item=AnzahlOffeneFenster icon="window" label="Offene Fenster: [%s]"
+	}
+	
+	Frame label="Wer ist wo?" {
+		Default item=LocationTim_i360
+		Default item=LocationSandra_i360
+		Default item=LocationTilman_i360
+	}
+	
+
+}
+

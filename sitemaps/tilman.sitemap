@@ -1,0 +1,20 @@
+sitemap myhome label="Tilman"{
+    
+Text item=gIKEA_DG_Buero_Farbe_Color label="Büro_Farbwähler" icon="light" {
+	Default item=TRADFRIDGE27CWSOpal600_Color label="Farbe"
+	Default item=TRADFRIDGE27CWSOpal6002_Color label="Farbe"
+}
+
+Text item=gIKEA_DG_Buero_Farbe_Dimmer label="Büro Bunt" icon="light" {
+	Default item=TRADFRIDGE27CWSOpal600_ColorTemperature label="Farbtemperatur"
+	Default item=TRADFRIDGE27CWSOpal6002_ColorTemperature label="Farbtemperatur"
+}   
+		
+Text item=gIKEA_DG_Buero_Weiss label="Büro Weiß" icon="light" {
+	Default item=TRADFRIDGE27WSOpal980lm_Brightness label="Helligkeit"
+	Default item=TRADFRIDGE27WSOpal980lm_ColorTemperature label="Farbtemperatur"
+	Default item=TRADFRIDGE27WSOpal980lm2_Brightness label="Helligkeit"
+	Default item=TRADFRIDGE27WSOpal980lm2_ColorTemperature label="Farbtemperatur"
+}   
+}
+

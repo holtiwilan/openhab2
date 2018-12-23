@@ -51,9 +51,10 @@ rule "Klingel"
 				sendTelegramPhoto("bot2", "http://192.168.178.31/snapshot.cgi?user=openhab&pwd=openhab", "Es klingelt")		
 				//sendTelegram("bot1", "Es Klingelt")
 				if (KlingelStumm.state == OFF) {
-					Thread::sleep(5000) /* wait for 5 seconds */
-					sendCommand(mihome_gateway_7c49ebb1dc1b_sound, 10000)
-					sendCommand(mihome_gateway_7c49ebb1dc1b_volume, 0)
+					createTimer(now.plusSeconds(5),  [ |
+						sendCommand(mihome_gateway_7c49ebb1dc1b_sound, 10000)
+						sendCommand(mihome_gateway_7c49ebb1dc1b_volume, 0)
+        	])
 				}
 				sendCommand(Klingel, OFF)
 			}
@@ -65,16 +66,17 @@ rule "FlurBlinken"
 	then
 		sendCommand(LichterFlur, ON)
 		sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, ON)
-		Thread::sleep(2000) /* wait for 1 seconds */
-		sendCommand(LichterFlur, OFF)
-		sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, OFF)
-		
-		Thread::sleep(2000) /* wait for 1 seconds */
-		sendCommand(LichterFlur, ON)
-		sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, ON)
-		Thread::sleep(2000) /* wait for 1 seconds */
-		sendCommand(LichterFlur, OFF)
-		sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, OFF)
-		
+		createTimer(now.plusSeconds(2),  [ |
+				sendCommand(LichterFlur, OFF)
+				sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, OFF)
+    ])
+		createTimer(now.plusSeconds(2),  [ |
+				sendCommand(LichterFlur, ON)
+				sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, ON)
+    ])
+		createTimer(now.plusSeconds(2),  [ |
+				sendCommand(LichterFlur, OFF)
+				sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, OFF)
+    ])
 		sendCommand(FlurBlinken, OFF)
 	end

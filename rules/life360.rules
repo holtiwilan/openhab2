@@ -9,7 +9,7 @@ rule "Tim angekommen"
 when
     Item LocationTim_i360 changed
 then
-    if (LocationTim_i360.state == "null") {
+    if (LocationTim_i360.state == "unterwegs") {
 	    logInfo("Life360","Tim ist unterwegs")
         sendCommand(AnwesenheitTim, OFF)
     } else if (LocationTim_i360.state == "Wohnort") {
@@ -28,7 +28,7 @@ rule "Sandra angekommen"
 when
     Item LocationSandra_i360 changed
 then
-    if (LocationSandra_i360.state == "null") {
+    if (LocationSandra_i360.state == "unterwegs") {
 	    logInfo("Life360","Sandra ist unterwegs")
         sendCommand(AnwesenheitSandra, OFF)
     } else if (LocationSandra_i360.state == "Wohnort") {
@@ -47,7 +47,7 @@ rule "Tilman angekommen"
 when
     Item LocationTilman_i360 changed
 then
-    if (LocationTilman_i360.state == "null") {
+    if (LocationTilman_i360.state == "unterwegs") {
 	    logInfo("Life360","Tilman ist unterwegs")
         sendCommand(AnwesenheitTilman, OFF)
     } else if (LocationTilman_i360.state == "Wohnort") {

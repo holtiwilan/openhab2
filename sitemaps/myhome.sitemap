@@ -28,10 +28,8 @@ sitemap myhome label="Zuhause"{
     }*/
     Frame label="Haus" {
 		Group item=gFenster
-		Text label="Anwesenheiten" icon="presence" {
-				Group item=gAnwesend
-				Group item=gLocation
-		}    
+		Group item=gLocation
+		    
 		Text label="Keller" icon="cellar" {
 			Group item=gUG_Mancave
 			Group item=gUG_Waschen

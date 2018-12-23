@@ -7,8 +7,9 @@ then
     sendCommand(TRADFRIBulbGU10W400lm2_Brightness, "50")
     sendCommand(TRADFRIBulbGU10W400lm3_Brightness, "50")
     sendCommand(Windfang_Brightness, "50")
-    Thread::sleep(5000)
-    sendCommand(LichterFlur, OFF)
+    createTimer(now.plusSeconds(5),  [ |
+        sendCommand(LichterFlur, OFF)
+    ])
 end
 
 rule "Licht im Flur nicht Dimmen"
@@ -20,8 +21,9 @@ then
     sendCommand(TRADFRIBulbGU10W400lm2_Brightness, "100")
     sendCommand(TRADFRIBulbGU10W400lm3_Brightness, "100")
     sendCommand(Windfang_Brightness, "100")
-    Thread::sleep(5000)
-    sendCommand(LichterFlur, OFF)
+    createTimer(now.plusSeconds(5),  [ |
+        sendCommand(LichterFlur, OFF)
+    ])
 end
 
 rule "Licht im Flur"

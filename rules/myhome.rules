@@ -64,6 +64,7 @@ then
 	sendCommand(Subwoofer, ON)
 	if(NightState.state == ON) {
 		sendCommand(Sonoff1, ON)
+		sendCommand(Tasmota3, ON)
 	}
 end
 
@@ -73,4 +74,5 @@ when
 then
 	sendCommand(Subwoofer, OFF)
 	sendCommand(Sonoff1, OFF)
+	sendCommand(Tasmota3, OFF)
 end

@@ -15,7 +15,7 @@ then
 end
 
  
-rule "Weihnachtsbeleuchtung Kette aus - Zeit"
+rule "Weihnachtsbeleuchtung Kette aus Zeit"
 when
   //jeden Abend um 22.30 Uhr
   Time cron "0 30 22 * * ?"
@@ -24,10 +24,10 @@ then
   logInfo("Weihnachtsbeleuchtung", "Weihnachtsbeleuchtung aus")
 end
 
-rule "Weihnachtsbeleuchtung Kette an - Zeit"
+rule "Weihnachtsbeleuchtung Kette an Zeit"
 when
   //jeden Morgen um 06.30 Uhr
-  Time cron "0 30 06 * * ?"
+  Time cron "0 30 7 1/1 * ? *"
 then
   sendCommand(Tasmota3, ON)
   logInfo("Weihnachtsbeleuchtung", "Weihnachtsbeleuchtung an")

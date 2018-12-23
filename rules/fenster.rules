@@ -42,7 +42,7 @@ rule "Es regnet"
 			}
 	end
 
-rule"FensterGeschlossen"
+rule "FensterGeschlossen"
 	when
 		Item gFenster received update // NOTE: the rule will trigger multiple times per event
 	then

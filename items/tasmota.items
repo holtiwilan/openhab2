@@ -1,1 +1,1 @@
-Switch Tasmota3		"Weihnachtsbaum"	    (gEG)	["Switchable"] { mqtt=">[mosquitto:cmnd/sonoff-tasmota-3/POWER:command:*:default],<[mosquitto:stat/sonoff-tasmotta-3/POWER:state:default]", autoupdate="false" }
+Switch Tasmota3		"Weihnachtsbaum"	    (gEG)	["Switchable"] { mqtt=">[mosquitto:cmnd/sonoff-tasmota-3/POWER:command:*:default],<[mosquitto:stat/sonoff-tasmotta-3/POWER:state:default]", autoupdate="true" }
