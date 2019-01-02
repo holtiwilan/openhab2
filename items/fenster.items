@@ -11,3 +11,4 @@ Group:Contact:OR(OPEN, CLOSED) gFenster "Fenster [(%d)]" <contact>
 
 	
 Number AnzahlOffeneFenster
+String NameOffeneFenster
