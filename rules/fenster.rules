@@ -1,3 +1,51 @@
+rule "FensterOffen"
+	when
+		Item gFenster received update // NOTE: the rule will trigger multiple times per event
+	then
+		Thread::sleep(500) // give persistence time to catch up
+		var String OffeneFenster = ""
+		if (gFenster.members.filter(s|s.state==OPEN).size == 0) {}
+			OffeneFenster = "Keine"
+		}
+		//Wohnzimmerfenster checken
+		if (mihome_sensor_magnet_aq2_158d0002722d11_isOpen.state == OPEN) {
+			OffeneFenster.concat("Wohnzimmer, ")
+		}
+		//Küchenfenster links checken
+		if (mihome_sensor_magnet_aq2_158d0002750f0b_isOpen.state == OPEN) {
+			OffeneFenster.concat("Küche, ")
+		}
+		//Küchenfenster rechts checken
+		if (mihome_sensor_magnet_aq2_158d0002722c1f_isOpen.state == OPEN) {
+			OffeneFenster.concat("Küche, ")
+		}
+		//Ankleide checken
+		if (mihome_sensor_magnet_aq2_158d000274ff63_isOpen.state == OPEN) {
+			OffeneFenster.concat("Ankleide, ")
+		}
+		//Badezimmer checken
+		if (mihome_sensor_magnet_aq2_158d000272f055_isOpen.state == OPEN) {
+			OffeneFenster.concat("Bad, ")
+		}
+		//Dachzimmer checken
+		if (mihome_sensor_magnet_aq2_158d0002750d62_isOpen.state == OPEN) {
+			OffeneFenster.concat("Dach, ")
+		}
+		//Kinderzimmer checken
+		if (mihome_sensor_magnet_aq2_158d0002726015_isOpen.state == OPEN) {
+			OffeneFenster.concat("Kinder, ")
+		}
+		//Schlafzimmer links checken
+		if (mihome_sensor_magnet_aq2_158d000272ef20_isOpen.state == OPEN) {
+			OffeneFenster.concat("Schlafzimmer, ")
+		}
+		//Schlafzimmer rechts checken
+		if (mihome_sensor_magnet_aq2_158d000272ecaf_isOpen.state == OPEN) {
+			OffeneFenster.concat("Schlafzimmer, ")
+		}
+		NameOffeneFenster.postUpdate(OffeneFenster)
+	end
+	
 rule "Es regnet"
     when
     	Item EsRegnet changed to ON
