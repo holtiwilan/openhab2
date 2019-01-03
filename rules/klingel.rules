@@ -65,17 +65,25 @@ rule "FlurBlinken"
 		Item FlurBlinken changed to ON
 	then
 		sendCommand(LichterFlur, ON)
+		sendCommand(Sonoff1, ON)
+		sendCommand(Sonoff2, ON)
 		sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, ON)
 		createTimer(now.plusSeconds(2),  [ |
 				sendCommand(LichterFlur, OFF)
+				sendCommand(Sonoff1, OFF)
+				sendCommand(Sonoff2, OFF)
 				sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, OFF)
     ])
 		createTimer(now.plusSeconds(2),  [ |
 				sendCommand(LichterFlur, ON)
+				sendCommand(Sonoff1, ON)
+				sendCommand(Sonoff2, ON)
 				sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, ON)
     ])
 		createTimer(now.plusSeconds(2),  [ |
 				sendCommand(LichterFlur, OFF)
+				sendCommand(Sonoff1, OFF)
+				sendCommand(Sonoff2, OFF)
 				sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, OFF)
     ])
 		sendCommand(FlurBlinken, OFF)

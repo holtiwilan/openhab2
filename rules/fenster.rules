@@ -1,49 +1,69 @@
+var String OffeneFenster = ""
+
 rule "FensterOffen"
 	when
 		Item gFenster received update // NOTE: the rule will trigger multiple times per event
 	then
 		Thread::sleep(500) // give persistence time to catch up
-		var String OffeneFenster = ""
-		if (gFenster.members.filter(s|s.state==OPEN).size == 0) {}
-			OffeneFenster = "Keine"
+
+		if (gFenster.members.filter(s|s.state==OPEN).size == 0) {
+			OffeneFenster = "Keine  "
+		} else {
+			OffeneFenster = ""			
 		}
+
 		//Wohnzimmerfenster checken
-		if (mihome_sensor_magnet_aq2_158d0002722d11_isOpen.state == OPEN) {
-			OffeneFenster.concat("Wohnzimmer, ")
+		if (FensterWohnzimmer.state == OPEN) {
+			OffeneFenster = OffeneFenster + "Wohnzimmer ,"
+			logInfo("Offene Fenster","Added Wohnzimmer " + OffeneFenster)
 		}
 		//Küchenfenster links checken
-		if (mihome_sensor_magnet_aq2_158d0002750f0b_isOpen.state == OPEN) {
-			OffeneFenster.concat("Küche, ")
+		if (FensterKuecheLinks.state == OPEN) {
+			OffeneFenster = OffeneFenster + "Küche ,"
+			logInfo("Offene Fenster","Added Küche " + OffeneFenster)
 		}
 		//Küchenfenster rechts checken
-		if (mihome_sensor_magnet_aq2_158d0002722c1f_isOpen.state == OPEN) {
-			OffeneFenster.concat("Küche, ")
+		if (FensterKuecheRechts.state == OPEN) {
+			if (!OffeneFenster.contains("Küche")) {
+				OffeneFenster = OffeneFenster + "Küche ,"
+				logInfo("Offene Fenster","Added Küche " + OffeneFenster)
+			}
 		}
 		//Ankleide checken
-		if (mihome_sensor_magnet_aq2_158d000274ff63_isOpen.state == OPEN) {
-			OffeneFenster.concat("Ankleide, ")
+		if (FensterAnkleide.state == OPEN) {
+			OffeneFenster = OffeneFenster + "Ankleide ,"
+			logInfo("Offene Fenster","Added Ankleidezimmer " + OffeneFenster)
 		}
 		//Badezimmer checken
-		if (mihome_sensor_magnet_aq2_158d000272f055_isOpen.state == OPEN) {
-			OffeneFenster.concat("Bad, ")
+		if (FensterBadezimmer.state == OPEN) {
+			OffeneFenster = OffeneFenster + "Bad ,"
+			logInfo("Offene Fenster","Added Badezimmer " + OffeneFenster)
 		}
 		//Dachzimmer checken
-		if (mihome_sensor_magnet_aq2_158d0002750d62_isOpen.state == OPEN) {
-			OffeneFenster.concat("Dach, ")
+		if (FensterDachzimmer.state == OPEN) {
+			OffeneFenster = OffeneFenster + "Dach ,"
+			logInfo("Offene Fenster","Added Dachzimmer " + OffeneFenster)
 		}
 		//Kinderzimmer checken
-		if (mihome_sensor_magnet_aq2_158d0002726015_isOpen.state == OPEN) {
-			OffeneFenster.concat("Kinder, ")
+		if (FensterKinderzimmer.state == OPEN) {
+			OffeneFenster = OffeneFenster + "Kinder ,"
+			logInfo("Offene Fenster","Added Kinderzimmer " + OffeneFenster)
 		}
 		//Schlafzimmer links checken
-		if (mihome_sensor_magnet_aq2_158d000272ef20_isOpen.state == OPEN) {
-			OffeneFenster.concat("Schlafzimmer, ")
+		if (FensterSchlafzimmerLinks.state == OPEN) {
+			OffeneFenster = OffeneFenster + "Schlafzimmer ,"
+			logInfo("Offene Fenster","Added Schlafzimmer " + OffeneFenster)
 		}
 		//Schlafzimmer rechts checken
-		if (mihome_sensor_magnet_aq2_158d000272ecaf_isOpen.state == OPEN) {
-			OffeneFenster.concat("Schlafzimmer, ")
+		if (FensterSchlafzimmerRechts.state == OPEN) {
+			if (!OffeneFenster.contains("Schlafzimmer")){
+				OffeneFenster = OffeneFenster + "Schlafzimmer ,"
+				logInfo("Offene Fenster","Added Schlafzimmer " + OffeneFenster)
+			}
 		}
-		NameOffeneFenster.postUpdate(OffeneFenster)
+		
+		NameOffeneFenster.postUpdate(OffeneFenster.substring(0, OffeneFenster.length-2))
+		
 	end
 	
 rule "Es regnet"
@@ -53,39 +73,39 @@ rule "Es regnet"
     	logInfo("Fenster","Es regnet, Fenster prüfen")
     	
 			//Wohnzimmerfenster checken
-			if (mihome_sensor_magnet_aq2_158d0002722d11_isOpen.state == OPEN) {
+			if (FensterWohnzimmer.state == OPEN) {
 				sendTelegram("bot2", "Es regnet und die Terassentür im Wohnzimmer ist offen")
 			}
 			//Küchenfenster links checken
-			if (mihome_sensor_magnet_aq2_158d0002750f0b_isOpen.state == OPEN) {
+			if (FensterKuecheLinks.state == OPEN) {
 				sendTelegram("bot2", "Es regnet und ein Fenster in der Küche ist offen")
 			}
 			//Küchenfenster rechts checken
-			if (mihome_sensor_magnet_aq2_158d0002722c1f_isOpen.state == OPEN) {
+			if (FensterKuecheRechts.state == OPEN) {
 				sendTelegram("bot2", "Es regnet und ein Fenster in der Küche ist offen")
 			}
 			//Ankleide checken
-			if (mihome_sensor_magnet_aq2_158d000274ff63_isOpen.state == OPEN) {
+			if (FensterAnkleide.state == OPEN) {
 				sendTelegram("bot2", "Es regnet und das Fenster in der Ankleide ist offen")
 			}
 			//Badezimmer checken
-			if (mihome_sensor_magnet_aq2_158d000272f055_isOpen.state == OPEN) {
+			if (FensterBadezimmer.state == OPEN) {
 				sendTelegram("bot2", "Es regnet und das Fenster im Badezimmer ist offen")
 			}
 			//Dachzimmer checken
-			if (mihome_sensor_magnet_aq2_158d0002750d62_isOpen.state == OPEN) {
+			if (FensterDachzimmer.state == OPEN) {
 				sendTelegram("bot2", "Es regnet und das Fenster im Dachzimmer ist offen")
 			}
 			//Kinderzimmer checken
-			if (mihome_sensor_magnet_aq2_158d0002726015_isOpen.state == OPEN) {
+			if (FensterKinderzimmer.state == OPEN) {
 				sendTelegram("bot2", "Es regnet und das Fenster im Kinderzimmer ist offen")
 			}
 			//Schlafzimmer links checken
-			if (mihome_sensor_magnet_aq2_158d000272ef20_isOpen.state == OPEN) {
+			if (FensterSchlafzimmerLinks.state == OPEN) {
 				sendTelegram("bot2", "Es regnet und ein Fenster im Schlafzimmer ist offen")
 			}
 			//Küchenfenster rechts checken
-			if (mihome_sensor_magnet_aq2_158d000272ecaf_isOpen.state == OPEN) {
+			if (FensterSchlafzimmerRechts.state == OPEN) {
 				sendTelegram("bot2", "Es regnet und ein Fenster im Schlafzimmer ist offen")
 			}
 	end

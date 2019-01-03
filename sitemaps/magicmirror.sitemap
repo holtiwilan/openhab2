@@ -1,8 +1,6 @@
 sitemap magicmirror label="Status"{
 	Frame label="Fenster"{
-		Text item=AnzahlOffeneFenster icon="window" label="Offene Fenster: [%s]"
 		Text item=NameOffeneFenster icon="window" label="Offene Fenster: [%s]"
-		
 	}
 	
 	Frame label="Wer ist wo?" {
