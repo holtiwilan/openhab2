@@ -1,5 +1,5 @@
 Group gIKEA_EG_Wohnzimmer "Wohnzimmer"	<light> 	(gEG_Wohnzimmer)
-    Dimmer   Leselampe_Brightness                    "Leselampe"      (gIKEA_EG_Wohnzimmer) ["Lighting"]  {channel="tradfri:0100:gwb8d7af2ba875:65563:brightness"}
+    Dimmer   Leselampe_Brightness                    "Leselampe"      (gIKEA_EG_Wohnzimmer)   {channel="tradfri:0100:gwb8d7af2ba875:65563:brightness"}
     Number   WirelessDimmerLeselampe_BatteryLevel   "Batterieladung"            (gIKEA_EG_Wohnzimmer)   {channel="tradfri:0820:gwb8d7af2ba875:65562:battery_level"}
     Switch   WirelessDimmerLeselampe_BatteryLow     "Niedriger Batteriestatus"  (gIKEA_EG_Wohnzimmer)   {channel="tradfri:0820:gwb8d7af2ba875:65562:battery_low"}
 
@@ -15,25 +15,32 @@ Group:Dimmer gIKEA_EG_Flur_Dimmer "Flur"       <light> (gEG_Flur) ["Lighting"]
 Group gIKEA_EG_Windfang "Licht Windfang" 	<light> 	(gEG_Windfang)
     Number   MotionSensorWindfang_BatteryLevel   "Batterieladung"                   (gIKEA_EG_Windfang)     {channel="tradfri:0107:gwb8d7af2ba875:65540:battery_level"}
     Switch   MotionSensorWindfang_BatteryLow     "Niedriger Batteriestatus"         (gIKEA_EG_Windfang)     {channel="tradfri:0107:gwb8d7af2ba875:65540:battery_low"}
-    Dimmer   Windfang_Brightness                 "Windfang"                       (gIKEA_EG_Windfang)   ["Lighting"]   {channel="tradfri:0100:gwb8d7af2ba875:65539:brightness"}
+    Dimmer   Windfang_Brightness                 "Windfang"                       (gIKEA_EG_Windfang)      {channel="tradfri:0100:gwb8d7af2ba875:65539:brightness"}
 
 Group gUG_Flur		"Flur"			<corridor>	(gUG)
     Group:Dimmer gIKEA_Keller_Flur_Dimmer "Keller"       <light> (gUG_Flur) ["Lighting"]
         Dimmer   TRADFRIKellerE27WOpal1000lm3_Brightness   "Keller1"   (gIKEA_Keller_Flur_Dimmer)   {channel="tradfri:0100:gwb8d7af2ba875:65560:brightness"}
         Dimmer   TRADFRIKellerE27WOpal1000lm4_Brightness   "Keller2"   (gIKEA_Keller_Flur_Dimmer)   {channel="tradfri:0100:gwb8d7af2ba875:65561:brightness"}
 
-Group:Dimmer gIKEA_DG_Buero_Weiss		"Büro Weiß"			<light>	(gDG_Buero) ["Lighting"]
-    Dimmer   TRADFRIDGE27WSOpal980lm_Brightness         "Helligkeit"    (gIKEA_DG_Buero_Weiss)       {channel="tradfri:0220:gwb8d7af2ba875:65549:brightness"}
-    Dimmer   TRADFRIDGE27WSOpal980lm_ColorTemperature   "Farbtemperatur"    (gIKEA_DG_Buero_Weiss)   {channel="tradfri:0220:gwb8d7af2ba875:65549:color_temperature"}
-    Dimmer   TRADFRIDGE27WSOpal980lm2_Brightness         "Helligkeit"   (gIKEA_DG_Buero_Weiss)       {channel="tradfri:0220:gwb8d7af2ba875:65551:brightness"}
-    Dimmer   TRADFRIDGE27WSOpal980lm2_ColorTemperature   "Farbtemperatur"   (gIKEA_DG_Buero_Weiss)   {channel="tradfri:0220:gwb8d7af2ba875:65551:color_temperature"}
+Group:Dimmer gIKEA_DG_Buero_Weiss_Helligkeit		"Büro Weiß Helligkeit [%.1f %%]"			<hue>	(gDG_Buero)
+    Dimmer   TRADFRIDGE27WSOpal980lm_Brightness         "Helligkeit 1"    (gIKEA_DG_Buero_Weiss_Helligkeit)       {channel="tradfri:0220:gwb8d7af2ba875:65549:brightness"}
+    Dimmer   TRADFRIDGE27WSOpal980lm2_Brightness         "Helligkeit 2"   (gIKEA_DG_Buero_Weiss_Helligkeit)       {channel="tradfri:0220:gwb8d7af2ba875:65551:brightness"}
 
-Group:Dimmer gIKEA_DG_Buero_Farbe_Dimmer		"Büro Bunt"			<light>	(gDG_Buero) ["Lighting"]
-    Dimmer   TRADFRIDGE27CWSOpal600_ColorTemperature   "Farbtemperatur" (gIKEA_DG_Buero_Farbe_Dimmer)   {channel="tradfri:0210:gwb8d7af2ba875:65552:color_temperature"}
-    Dimmer   TRADFRIDGE27CWSOpal6002_ColorTemperature   "Farbtemperatur"    (gIKEA_DG_Buero_Farbe_Dimmer)   {channel="tradfri:0210:gwb8d7af2ba875:65553:color_temperature"}
+Group:Dimmer gIKEA_DG_Buero_Weiss_Farbtemperatur		"Büro Weiß Farbtemperatur"			<light>	(gDG_Buero)
+    Dimmer   TRADFRIDGE27WSOpal980lm_ColorTemperature   "Farbtemperatur Weiß 1"    (gIKEA_DG_Buero_Weiss_Farbtemperatur)   {channel="tradfri:0220:gwb8d7af2ba875:65549:color_temperature"}
+    Dimmer   TRADFRIDGE27WSOpal980lm2_ColorTemperature   "Farbtemperatur Weiß 2"   (gIKEA_DG_Buero_Weiss_Farbtemperatur)   {channel="tradfri:0220:gwb8d7af2ba875:65551:color_temperature"}
 
 
-Group:Color  gIKEA_DG_Buero_Farbwaehler   		"Büro_Farbwähler"			<light>	(gDG_Buero) ["Lighting"]
-    Color    TRADFRIDGE27CWSOpal600_Color              "Farbe"          (gIKEA_DG_Buero_Farbe_Color)   {channel="tradfri:0210:gwb8d7af2ba875:65552:color"}
-    Color    TRADFRIDGE27CWSOpal6002_Color              "Farbe" (gIKEA_DG_Buero_Farbe_Color)            {channel="tradfri:0210:gwb8d7af2ba875:65553:color"}
+Group:Dimmer gIKEA_DG_Buero_Farbe_Dimmer		"Farbe Temperatur [%.1f %%]"			<hue>	(gDG_Buero)
+    Dimmer   TRADFRIDGE27CWSOpal600_ColorTemperature   "Farbtemperatur 1" (gIKEA_DG_Buero_Farbe_Dimmer)   {channel="tradfri:0210:gwb8d7af2ba875:65568:color_temperature"}
+    Dimmer   TRADFRIDGE27CWSOpal6002_ColorTemperature   "Farbtemperatur 2"    (gIKEA_DG_Buero_Farbe_Dimmer)   {channel="tradfri:0210:gwb8d7af2ba875:65570:color_temperature"}
+
+Group:Dimmer gIKEA_DG_Buero_Farbe_Helligkeit		"Farbe Helligkeit [%.1f %%]"			<hue>	(gDG_Buero)
+    Dimmer   TRADFRIDGE27CWSOpal600_ColorBrightness   "FarbHelligkeit 1" (gIKEA_DG_Buero_Farbe_Helligkeit)   {channel="tradfri:0210:gwb8d7af2ba875:65568:color"}
+    Dimmer   TRADFRIDGE27CWSOpal6002_ColorBrightness   "FarbHelligkeit 2"    (gIKEA_DG_Buero_Farbe_Helligkeit)   {channel="tradfri:0210:gwb8d7af2ba875:65570:color"}
+
+
+Group:Color  gIKEA_DG_Buero_Farbwaehler   		"Farbwähler Beide"			<colorwheel>	(gDG_Buero)
+    Color    TRADFRIDGE27CWSOpal600_Color              "Farbe 1"              <colorwheel>    (gIKEA_DG_Buero_Farbwaehler)   {channel="tradfri:0210:gwb8d7af2ba875:65568:color"}
+    Color    TRADFRIDGE27CWSOpal6002_Color              "Farbe 2"             <colorwheel>    (gIKEA_DG_Buero_Farbwaehler)            {channel="tradfri:0210:gwb8d7af2ba875:65570:color"}
     

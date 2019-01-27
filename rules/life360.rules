@@ -14,11 +14,11 @@ then
         sendCommand(AnwesenheitTim, OFF)
     } else if (LocationTim_i360.state == "Wohnort") {
         logInfo("Life360","Tim ist "+ LocationTim_i360.state)
-        sendTelegram("bot1", "Tim ist zuhause sagt Life360")
+        //sendTelegram("bot1", "Tim ist zuhause sagt Life360")
 	    sendCommand(AnwesenheitTim, ON)
 	} else {
         logInfo("Life360","Tim ist hier angekommen: "+ LocationTim_i360.state)
-        sendTelegram("bot1", "Tim ist hier angekommen: "+ LocationTim_i360.state)
+        //sendTelegram("bot1", "Tim ist hier angekommen: "+ LocationTim_i360.state)
         sendCommand(AnwesenheitTim, OFF)
     }
     
@@ -33,11 +33,11 @@ then
         sendCommand(AnwesenheitSandra, OFF)
     } else if (LocationSandra_i360.state == "Wohnort") {
         logInfo("Life360","Sandra ist "+ LocationSandra_i360.state)
-        sendTelegram("bot1", "Sandra ist zuhause sagt Life360")
+        //sendTelegram("bot1", "Sandra ist zuhause sagt Life360")
 	    sendCommand(AnwesenheitSandra, ON)
 	} else {
         logInfo("Life360","Sandra ist hier angekommen: "+ LocationSandra_i360.state)
-        sendTelegram("bot1", "Sandra ist hier angekommen: "+ LocationSandra_i360.state)
+        //sendTelegram("bot1", "Sandra ist hier angekommen: "+ LocationSandra_i360.state)
         sendCommand(AnwesenheitSandra, OFF)
     }
     
@@ -52,12 +52,25 @@ then
         sendCommand(AnwesenheitTilman, OFF)
     } else if (LocationTilman_i360.state == "Wohnort") {
         logInfo("Life360","Tilman ist "+ LocationTilman_i360.state)
-        sendTelegram("bot1", "Tilman ist zuhause sagt Life360")
+        //sendTelegram("bot1", "Tilman ist zuhause sagt Life360")
 	    sendCommand(AnwesenheitTilman, ON)
 	} else {
         logInfo("Life360","Tilman ist hier angekommen: "+ LocationTilman_i360.state)
-        sendTelegram("bot1", "Tilman ist hier angekommen: "+ LocationTilman_i360.state)
+        //sendTelegram("bot1", "Tilman ist hier angekommen: "+ LocationTilman_i360.state)
         sendCommand(AnwesenheitTilman, OFF)
+    }
+    
+end
+
+rule "Tilman gegangen - Licht an"
+when
+    Item LocationTilman_i360 changed from "Wohnort" to "unterwegs" 
+then
+    if (now.getHourOfDay >= 6 && now.getHourOfDay <8 && (gIKEA_DG_Buero_Farbe_Helligkeit.state == ON || gIKEA_DG_Buero_Weiss_Helligkeit.state == ON)) {
+	    logInfo("Life360","Tilman ist nicht zuhause, aber sein Licht brennt noch.")
+        sendTelegram("bot1", "Tilman ist nicht zuhause, aber sein Licht brennt noch.")
+        sendCommand(gIKEA_DG_Buero_Farbe_Helligkeit, OFF)
+        sendCommand(gIKEA_DG_Buero_Weiss_Helligkeit, OFF)
     }
     
 end

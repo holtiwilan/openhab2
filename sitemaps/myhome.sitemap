@@ -19,13 +19,13 @@ sitemap myhome label="Zuhause"{
 			Chart item=INET_UP period=W refresh=3600 visibility=[CHART_PERIOD==2]
 		}
     }
-	/*Frame label="Garten" icon="garden" {
-        Group item=gGarten
-		Webview url="http://192.168.178.32/videostream.cgi?user=admin&pwd=123456&resolution=32&rate=14" height=14
+	Text label="Kameras" icon="camera" {
+		Image url="http://192.168.178.31/snapshot.cgi?user=openhab&pwd=openhab" refresh=1000
+		Image url="http://192.168.178.32/snapshot.cgi?user=openhab&pwd=openhab" refresh=1000
+		Image url="http://192.168.178.21/snapshot.jpg" refresh=1000
+		
+		
     }
-	Frame label="Vorgarten" icon="garden" {
-			Webview url="http://192.168.178.31/videostream.cgi?user=admin&pwd=123456&resolution=32&rate=14" height=14
-    }*/
     Frame label="Haus" {
 		Group item=gFenster
 		Group item=gLocation
