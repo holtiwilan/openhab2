@@ -64,13 +64,16 @@ end
 
 rule "Tilman gegangen - Licht an"
 when
-    Item LocationTilman_i360 changed from "Wohnort" to "unterwegs" 
+    Item LocationTilman_i360 changed from "Wohnort" to "unterwegs"
+    // Time cron "0 */1 * * * ? *" // every 1 minutes
 then
-    if (now.getHourOfDay >= 6 && now.getHourOfDay <8 && (gIKEA_DG_Buero_Farbe_Helligkeit.state == ON || gIKEA_DG_Buero_Weiss_Helligkeit.state == ON)) {
-	    logInfo("Life360","Tilman ist nicht zuhause, aber sein Licht brennt noch.")
-        sendTelegram("bot1", "Tilman ist nicht zuhause, aber sein Licht brennt noch.")
-        sendCommand(gIKEA_DG_Buero_Farbe_Helligkeit, OFF)
-        sendCommand(gIKEA_DG_Buero_Weiss_Helligkeit, OFF)
+    if (now.getHourOfDay >= 6 && now.getHourOfDay < 7) {
+        if (gIKEA_DG_Buero_Weiss_Helligkeit.state > 0 || gIKEA_DG_Buero_Farbe_Helligkeit.state > 0) {
+	        logInfo("Life360","Tilman ist nicht zuhause, aber sein Licht brennt noch.")
+            sendTelegram("bot1", "Tilman ist nicht zuhause, aber sein Licht brennt noch.")
+            sendCommand(gIKEA_DG_Buero_Farbe_Helligkeit, OFF)
+            sendCommand(gIKEA_DG_Buero_Weiss_Helligkeit, OFF)
+        }   
     }
     
 end

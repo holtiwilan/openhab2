@@ -1,0 +1,11 @@
+rule "Shelly - Licht Unterschraenke Kueche"
+when 
+	Item ShellyKueche changed
+then	
+		
+	if (Sonoff2.state.toString == "ON") { 
+        sendCommand(Sonoff2, OFF)
+    } else {
+        sendCommand(Sonoff2, ON)
+    }
+end
