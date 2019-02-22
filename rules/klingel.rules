@@ -45,15 +45,15 @@ rule "Klingel"
 				lastRing = now
 				sendCommand(FlurBlinken, ON)
 				if (KlingelStumm.state == OFF) {
-					sendCommand(mihome_gateway_7c49ebb1dc1b_volume, 50)
-					sendCommand(mihome_gateway_7c49ebb1dc1b_sound, 10)
+					sendCommand(XiaomiMiSmartHomeGateway_Volume, 50)
+					sendCommand(XiaomiMiSmartHomeGateway_Sound, 10)
 				}
 				sendTelegramPhoto("bot2", "http://192.168.178.31/snapshot.cgi?user=openhab&pwd=openhab", "Es klingelt")		
 				//sendTelegram("bot1", "Es Klingelt")
 				if (KlingelStumm.state == OFF) {
 					createTimer(now.plusSeconds(5),  [ |
-						sendCommand(mihome_gateway_7c49ebb1dc1b_sound, 10000)
-						sendCommand(mihome_gateway_7c49ebb1dc1b_volume, 0)
+						sendCommand(XiaomiMiSmartHomeGateway_Sound, 10000)
+						sendCommand(XiaomiMiSmartHomeGateway_Volume, 0)
         	])
 				}
 				sendCommand(Klingel, OFF)
@@ -67,24 +67,24 @@ rule "FlurBlinken"
 		sendCommand(LichterFlur, ON)
 		sendCommand(Sonoff1, ON)
 		sendCommand(Sonoff2, ON)
-		sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, ON)
+		sendCommand(XiaomiMiSmartHomeGateway_Brightness, ON)
 		createTimer(now.plusSeconds(2),  [ |
 				sendCommand(LichterFlur, OFF)
 				sendCommand(Sonoff1, OFF)
 				sendCommand(Sonoff2, OFF)
-				sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, OFF)
+				sendCommand(XiaomiMiSmartHomeGateway_Brightness, OFF)
     ])
 		createTimer(now.plusSeconds(2),  [ |
 				sendCommand(LichterFlur, ON)
 				sendCommand(Sonoff1, ON)
 				sendCommand(Sonoff2, ON)
-				sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, ON)
+				sendCommand(XiaomiMiSmartHomeGateway_Brightness, ON)
     ])
 		createTimer(now.plusSeconds(2),  [ |
 				sendCommand(LichterFlur, OFF)
 				sendCommand(Sonoff1, OFF)
 				sendCommand(Sonoff2, OFF)
-				sendCommand(mihome_gateway_7c49ebb1dc1b_brightness, OFF)
+				sendCommand(XiaomiMiSmartHomeGateway_Brightness, OFF)
     ])
 		sendCommand(FlurBlinken, OFF)
 	end
