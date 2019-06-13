@@ -12,25 +12,24 @@ Group gInternet		(All)
 
 /* Keller */
 Group gUG_Waschen	"Waschraum"		<softener>	(gUG)    
-    Switch	ShellyWaschen		"Waschkeller"	<light>		(gUG_Waschen)	["Lighting"] {mqtt=">[mosquitto:shellies/shelly1-32C488/relay/0/command:command:*:MAP(onoff.map)],<[mosquitto:shellies/shelly1-32C488/relay/0:state:MAP(onoff.map)]", autoupdate="false"}
-
+   
 Group gUG_Mancave	"Mancave"		<niveau>	(gUG)
     Switch	Verstaerker_Keller		"Verstärker"	<light>		(gUG_Mancave)	["Lighting"] { mqtt=">[mosquitto:cmnd/sonoff-verstaerker/POWER:command:*:default],<[mosquitto:stat/sonoff-verstaerker/POWER:state:default]" }
 
 
 /* Erdgeschoss */
 Group gEG_Wohnzimmer "Wohnzimmer" 	<sofa> 	(gEG)
-    Switch	Sonoff1		"Vitrine"	<light>		(gEG_Wohnzimmer)	["Lighting"] {mqtt=">[mosquitto:/Sonoff1/gpio/12:command:ON:1],>[mosquitto:/Sonoff1/gpio/12:command:OFF:0],<[mosquitto:/Sonoff1/gpio/12:state:MAP(onoff.map)]", autoupdate="false"}
+    Switch	Sonoff1		"Vitrine"	<light>		(gEG_Wohnzimmer)    {channel="mqtt:topic:MQTTVitrine:Power"}
     
     Group		gEG_Wohnzimmer_HiFi		<living>		(gEG_Wohnzimmer)
         Switch DenonPower           "Power"                 (gEG_Wohnzimmer_HiFi)                 {denon="avrx1000#PW"}
         Dimmer DenonVolume          "Volume [%.1f]"         (gEG_Wohnzimmer_HiFi)                 {denon="avrx1000#MV"}
         Switch DenonMute            "Mute"                  (gEG_Wohnzimmer_HiFi)                 {denon="avrx1000#MU"}
         String DenonSurroundMode    "Surround mode [%s]"    (gEG_Wohnzimmer_HiFi)                 {denon="avrx1000#SURROUNDMODE"}
-        Switch	Subwoofer		"Subwoofer"	<light>		(gEG_Wohnzimmer_HiFi)	["Lighting"] { mqtt=">[mosquitto:cmnd/sonoff-subwoofer/POWER:command:*:default],<[mosquitto:stat/sonoff-subwoofer/POWER:state:default]" }
+        Switch	Subwoofer		"Subwoofer"	<light>		(gEG_Wohnzimmer_HiFi)	["Lighting"] {channel="mqtt:topic:MQTTSubwoofer:Power"}
 Group gEG_Kueche 	"Küche" 		<kitchen> 	(gEG)
     Switch DashButton1  "Dash 1"    <switch>    (gEG_Kueche)        ["Lighting"]
-    Switch Sonoff2		"Küche"     <light>		(gEG_Kueche)	    ["Lighting"] {mqtt=">[mosquitto:/Sonoff2/gpio/12:command:ON:1],>[mosquitto:/Sonoff2/gpio/12:command:OFF:0],<[mosquitto:/Sonoff2/gpio/12:state:MAP(onoff.map)]", autoupdate="false"}
+    Switch Sonoff2		"Küche"     <light>		(gEG_Kueche)	    ["Lighting"] {channel="mqtt:topic:MQTTKueche:Power"}
 Group gEG_Flur 		"Flur" 			<corridor> 	(gEG)
     Switch LichterDimmen	"Licht im Flur dimmen"	    (gEG_Flur)	["Lighting"]
     Switch LichterFlur	"Licht im Flur"	(gEG_Flur)	["Lighting"]

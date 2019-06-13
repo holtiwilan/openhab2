@@ -77,3 +77,41 @@ then
     }
     
 end
+
+rule "Convert Life360 JSON from Tim"
+  when
+    Item Life360_Tim_Json changed 
+ then
+      // use the transformation service to retrieve the value
+    val newValue1 = transform("JSONPATH", "$.locname", Life360_Tim_Json.state.toString)
+    val newValue2 = transform("JSONPATH", "$.batt", Life360_Tim_Json.state.toString)
+     // post the new value to the Number Item
+    LocationTim_i360.postUpdate( newValue1 )
+    BatterieTim.postUpdate( newValue2 )
+ end
+
+rule "Convert Life360 JSON from Sandra"
+  when
+    Item Life360_Sandra_Json changed 
+ then
+    // use the transformation service to retrieve the value
+    val newValue1 = transform("JSONPATH", "$.locname", Life360_Sandra_Json.state.toString)
+    val newValue2 = transform("JSONPATH", "$.batt", Life360_Sandra_Json.state.toString)
+
+    // post the new value to the Number Item
+    LocationSandra_i360.postUpdate( newValue1 )
+    BatterieSandra.postUpdate( newValue2 )
+ end
+
+rule "Convert Life360 JSON from Tilman"
+  when
+    Item Life360_Tilman_Json changed 
+ then
+    // use the transformation service to retrieve the value
+    val newValue1 = transform("JSONPATH", "$.locname", Life360_Tilman_Json.state.toString)
+    val newValue2 = transform("JSONPATH", "$.batt", Life360_Tilman_Json.state.toString)
+
+    // post the new value to the Number Item
+    LocationTilman_i360.postUpdate( newValue1 )
+    BatterieTilman.postUpdate( newValue2 )
+ end

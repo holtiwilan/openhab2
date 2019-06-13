@@ -1,1 +1,2 @@
-Switch Tasmota3		"Weihnachtsbaum"	    (gEG)	["Switchable"] { mqtt=">[mosquitto:cmnd/sonoff-tasmota-3/POWER:command:*:default],<[mosquitto:stat/sonoff-tasmotta-3/POWER:state:default]", autoupdate="true" }
+Switch Tasmota3		"Weihnachtsbaum"	    (gEG)	["Switchable"] {channel="mqtt:topic:MQTTWeihnachtsbaum:Power"}
+Switch   Freifunk   "Freifunk"   (gUG_Waschen)   ["Switchable"]  {channel="mqtt:topic:834e7224:POWER"}

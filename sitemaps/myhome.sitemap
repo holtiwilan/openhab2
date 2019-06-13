@@ -26,6 +26,10 @@ sitemap myhome label="Zuhause"{
 		
 		
     }
+		Frame label="Garten"{
+			Group item=gGarten
+		}
+
     Frame label="Haus" {
 		Group item=gFenster
 		Group item=gLocation

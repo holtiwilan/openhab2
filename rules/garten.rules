@@ -5,18 +5,17 @@ when
     Item Bewaessern changed
 then
         Rasensprenger_timer?.cancel // the ? will skip this line if timer is null
-	logInfo("Bewässern","Status ist " +LichterDimmen.state.toString)
-        switch Bewaessern.state.toString {
+	    switch Bewaessern.state.toString {
             case "ON": {
-		sendCommand(Rasensprenger, ON)
+				sendCommand(Rasensprenger, ON)
                 Rasensprenger_timer = createTimer(now.plusMinutes(30), [| 
-                    sendCommand(Rasensprenger, OFF) 
-		    postUpdate(Bewaessern, OFF)
+                	sendCommand(Rasensprenger, OFF) 
+		    		postUpdate(Bewaessern, OFF)
                 ])
             }
             case "OFF": {
-		Rasensprenger_timer.cancel()                
-		sendCommand(Rasensprenger, OFF)
+				Rasensprenger_timer.cancel()                
+				sendCommand(Rasensprenger, OFF)
             }
         }
 end
@@ -24,7 +23,7 @@ end
 rule "check Bewaesserung"
 when
 	Time cron "0 0 7 * * ?" or
-	Time cron "0 0 19 * * ?"
+	Time cron "0 0 20 * * ?"
 then
 	logInfo("Bewässerung","Regel feuert")
 	if(RegenReicht.state.toString == "OFF") {

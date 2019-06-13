@@ -1,3 +1,3 @@
-Switch Klingel		"Klingel"	    (gEG)	["Switchable"] { mqtt=">[mosquitto:cmnd/sonoff-klingel/POWER:command:*:default],<[mosquitto:stat/sonoff-klingel/POWER:state:default]" }
+Switch Klingel		"Klingel"	    (gEG)	["Switchable"] {channel="mqtt:topic:MQTTKlingel:Power"}
 Switch KlingelStumm	"Klingel Stumm"	(gEG)	["Switchable"]
 Switch FlurBlinken	"Blinken"	    (gEG)	["Switchable"]

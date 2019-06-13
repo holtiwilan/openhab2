@@ -5,8 +5,7 @@ when
     System started
 then
     logInfo("Klingel","Setzte lastRing auf " + now)
-			
-	lastRing = now
+		lastRing = now
 end
 
 rule "Klingel stumm"
@@ -44,19 +43,19 @@ rule "Klingel"
 			if(lastRing.isBefore(now.minusSeconds(10))) {
 				lastRing = now
 				sendCommand(FlurBlinken, ON)
+				sendTelegramPhoto("bot2", "http://192.168.178.31/snapshot.cgi?user=openhab&pwd=openhab", "Es klingelt")		
+				//sendTelegram("bot1", "Es Klingelt")
+				sendCommand(Klingel, OFF)
 				if (KlingelStumm.state == OFF) {
 					sendCommand(XiaomiMiSmartHomeGateway_Volume, 50)
 					sendCommand(XiaomiMiSmartHomeGateway_Sound, 10)
 				}
-				sendTelegramPhoto("bot2", "http://192.168.178.31/snapshot.cgi?user=openhab&pwd=openhab", "Es klingelt")		
-				//sendTelegram("bot1", "Es Klingelt")
 				if (KlingelStumm.state == OFF) {
 					createTimer(now.plusSeconds(5),  [ |
 						sendCommand(XiaomiMiSmartHomeGateway_Sound, 10000)
 						sendCommand(XiaomiMiSmartHomeGateway_Volume, 0)
         	])
 				}
-				sendCommand(Klingel, OFF)
 			}
     end
 
@@ -65,25 +64,21 @@ rule "FlurBlinken"
 		Item FlurBlinken changed to ON
 	then
 		sendCommand(LichterFlur, ON)
-		sendCommand(Sonoff1, ON)
-		sendCommand(Sonoff2, ON)
 		sendCommand(XiaomiMiSmartHomeGateway_Brightness, ON)
 		createTimer(now.plusSeconds(2),  [ |
 				sendCommand(LichterFlur, OFF)
-				sendCommand(Sonoff1, OFF)
-				sendCommand(Sonoff2, OFF)
 				sendCommand(XiaomiMiSmartHomeGateway_Brightness, OFF)
     ])
 		createTimer(now.plusSeconds(2),  [ |
 				sendCommand(LichterFlur, ON)
-				sendCommand(Sonoff1, ON)
-				sendCommand(Sonoff2, ON)
 				sendCommand(XiaomiMiSmartHomeGateway_Brightness, ON)
     ])
 		createTimer(now.plusSeconds(2),  [ |
 				sendCommand(LichterFlur, OFF)
-				sendCommand(Sonoff1, OFF)
-				sendCommand(Sonoff2, OFF)
+				sendCommand(XiaomiMiSmartHomeGateway_Brightness, OFF)
+    ])
+		createTimer(now.plusSeconds(3),  [ |
+				sendCommand(LichterFlur, OFF)
 				sendCommand(XiaomiMiSmartHomeGateway_Brightness, OFF)
     ])
 		sendCommand(FlurBlinken, OFF)

@@ -1,7 +1,12 @@
 Group gLocation		(All)
-String LocationTim_i360     "Tim @ [%s]"        <tim>       (gLocation) {mqtt="<[mosquitto:owntracks/Tim:state:JSONPATH($.locname):.*]"}
-String BatterieTim         "Batterie [%s] %"    <battery>   (gLocation) {mqtt="<[mosquitto:owntracks/Tim:state:JSONPATH($.batt):.*]"}
-String LocationSandra_i360  "Sandra @ [%s]"     <sandra>    (gLocation) {mqtt="<[mosquitto:owntracks/Sandra:state:JSONPATH($.locname):.*]"}
-String BatterieSandra         "Batterie [%s] %" <battery>   (gLocation) {mqtt="<[mosquitto:owntracks/Sandra:state:JSONPATH($.batt):.*]"}
-String LocationTilman_i360  "Tilman @ [%s]"     <tilman>    (gLocation) {mqtt="<[mosquitto:owntracks/Tilman:state:JSONPATH($.locname):.*]"}
-String BatterieTilman         "Batterie [%s] %" <battery>   (gLocation) {mqtt="<[mosquitto:owntracks/Tilman:state:JSONPATH($.batt):.*]"}
+String LocationTim_i360     "Tim @ [%s]"        <tim>       (gLocation) 
+String BatterieTim         "Batterie [%s] %"    <battery>   (gLocation) 
+String LocationSandra_i360  "Sandra @ [%s]"     <sandra>    (gLocation) 
+String BatterieSandra         "Batterie [%s] %" <battery>   (gLocation) 
+String LocationTilman_i360  "Tilman @ [%s]"     <tilman>    (gLocation) 
+String BatterieTilman         "Batterie [%s] %" <battery>   (gLocation)
+
+
+String Life360_Tim_Json "Life360 Tim" {channel="mqtt:topic:MQTTLIFE360TIM:Tim"}
+String Life360_Sandra_Json "Life360 Sandra" {channel="mqtt:topic:MQTTLIFE360TIM:Sandra"}
+String Life360_Tilman_Json "Life360 Tilman" {channel="mqtt:topic:MQTTLIFE360TIM:Tilman"}
