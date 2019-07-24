@@ -1,2 +1,6 @@
 Switch Tasmota3		"Weihnachtsbaum"	    (gEG)	["Switchable"] {channel="mqtt:topic:MQTTWeihnachtsbaum:Power"}
 Switch   Freifunk   "Freifunk"   (gUG_Waschen)   ["Switchable"]  {channel="mqtt:topic:834e7224:POWER"}
+
+Switch	SV1		"Sonoff SV 1"	<light>		(gUG_Mancave)	["Lighting"] { channel="mqtt:topic:MQTT_Sonoff_SV_1:POWER"}
+Switch	SV2		"Sonoff SV 2"	<light>		(gUG_Mancave)	["Lighting"] { channel="mqtt:topic:MQTT_Sonoff_SV_2:POWER"}
+Switch	SV3		"Sonoff SV 3"	<light>		(gUG_Mancave)	["Lighting"] { channel="mqtt:topic:MQTT_Sonoff_SV_3:POWER"}

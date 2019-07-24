@@ -1,0 +1,3 @@
+Image  ESP32Cam1Image { channel="ipcamera:HTTPONLY:ESP32Cam1:image" }
+Switch ESP32Cam1CreateGif "Create animated GIF" { channel="ipcamera:HTTPONLY:ESP32Cam1:updateGif" }
+String ESP32Cam1jpegStreamUrl "Mjpeg Stream" { channel="ipcamera:HTTPONLY:ESP32Cam1:streamUrl" }
